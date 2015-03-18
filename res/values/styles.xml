@@ -1,0 +1,54 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <!-- Green Button Style -->
+    <style name="btnStyleGreen" parent="@android:style/Widget.Button">
+       <item name="android:textSize">22sp</item>
+       <item name="android:textStyle">bold</item>
+       <item name="android:textColor">@drawable/btn_green_text_color</item>
+       <item name="android:gravity">center</item>
+       <item name="android:background">@drawable/btn_green_background</item>
+       <item name="android:padding">8dp</item>
+       <item name="android:minHeight">0dp</item>
+       <item name="android:minWidth">0dp</item>
+   </style>
+   
+    <!-- Red Button Style -->
+    <style name="btnStyleRed" parent="@android:style/Widget.Button">
+       <item name="android:textSize">22sp</item>
+       <item name="android:textStyle">bold</item>
+       <item name="android:textColor">@drawable/btn_red_text_color</item>
+       <item name="android:gravity">center</item>
+       <item name="android:background">@drawable/btn_red_background</item>
+       <item name="android:padding">8dp</item>
+       <item name="android:minHeight">0dp</item>
+       <item name="android:minWidth">0dp</item>
+   </style>
+   
+    <!-- Text Link Style -->
+    <style name="btnStyleTextLink" parent="@android:style/Widget.Button">
+       <item name="android:textSize">14sp</item>
+       <item name="android:textStyle">bold</item>
+       <item name="android:textColor">@color/signme_red</item>
+       <item name="android:background">@drawable/text_link_background</item>
+       <item name="android:minHeight">0dp</item>
+       <item name="android:minWidth">0dp</item>
+   </style>
+
+</resources>

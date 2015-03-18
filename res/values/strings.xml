@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SignMe</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- LOGIN ACTIVITY -->
+    <string name="email">email:</string>
+    <string name="password">password:</string>
+    <string name="login">log in</string>
+    <string name="no_account">Don\'t have an account yet?</string>
+    <string name="register_button">Register.</string>
+    <string name="email_invalid">Invalid email address.</string>
+    <string name="no_password">Hey friend, you didn\'t enter your password :)</string>
+
+    <!-- REGISTRATION ACTIVITY -->
+    <string name="full_name">full name:</string>
+    <string name="password_again">password again:</string>
+    <string name="register">register</string>
+    <string name="enter_your_students_email">Make sure to enter your student\'s email address.</string>
+    <string name="agree_to_the_terms">By registering you agree to the</string>
+    <string name="terms_button">terms of service.</string>
+    <string name="all_fields_mandatory">All fields are mandatory.</string>
+    <string name="passwords_do_not_match">Passwords do not match.</string>
+    <string name="password_too_short">Please choose a password which has at least 6 characters.</string>
+
+    <!-- EMAIL SENT ACTIVITY -->
+    <string name="confirmation_email_sent">A confirmation email has been sent to your address.</string>
+    <string name="click_on_the_confirmation_link">Please click on the confirmation link to activate your account.</string>
+    <string name="reload_button">reload</string>
+
+    <!-- ACCOUNT ACTIVATED ACTIVITY -->
+    <string name="account_has_been_activated">Awesome! Your account has now been activated.</string>
+    <string name="you_may_start">You may start using the app.</string>
+    <string name="continue_button">continue</string>
+    
+    <!-- LECTURES ACTIVITY -->
+    <string name="no_active_lectures">There are no active lectures at the moment.</string>
+    <string name="create_lecture_button">create a lecture</string>
+
+    <!-- CONTENT DESCRIPTIONS -->
+    <string name="img_logo">App Logo</string>
+    <string name="img_paper_plane">Paper Plane Icon</string>
+    <string name="menu">Menu</string>
+
+    <!-- ACTIVITY TITLES -->
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_registration">Register</string>
+    <string name="title_activity_email_sent">Account Confirmation</string>
+    <string name="title_activity_account_activated">Account Activated</string>
+    <string name="title_activity_lectures">Lectures</string>
+    
+    <!-- API ERRORS -->
+    <string name="error_50">User with this email address already exists.</string>
+    <string name="error_51">A confirmation email has already been sent to this address.</string>
+    <string name="error_60">Your account has not yet been activated.</string>
+    <string name="error_61">Unable to login with provided credentials.</string>
+
+</resources>

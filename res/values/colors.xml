@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="gray_background">#ecf0f1</color>
+    <color name="signme_green">#2ecc71</color>
+    <color name="signme_red">#e74c3c</color>
+    <color name="signme_dark_red">#c0392b</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="dark_gray_text">#a6a9ab</color>
+
+</resources>
