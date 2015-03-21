@@ -59,8 +59,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 			startLoadingAnimation();
 
-			String email = inputEmail.getText().toString();
-			String password = inputPassword.getText().toString();
+			final String email = inputEmail.getText().toString();
+			final String password = inputPassword.getText().toString();
 
 			if (Utils.isValidEmail(email))
 				if (password.length() > 0)
@@ -71,6 +71,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 						stopLoadingAnimation();
 						Intent intent = new Intent(LoginActivity.this,
 								LecturesActivity.class);
+						intent.putExtra("email", email);
 						startActivity(intent);
 						finish();
 					}
@@ -125,7 +126,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		});
 	}
 
-	public void stopLoadingAnimation() {
+	public void startLoadingAnimation() {
 		// set a new Timer
 		timer = new Timer();
 
@@ -134,7 +135,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		timer.schedule(timerTask, 0, 150); //
 	}
 
-	public void startLoadingAnimation() {
+	public void stopLoadingAnimation() {
 		
 		// stop the timer, if it's not already null
 		if (timer != null) {

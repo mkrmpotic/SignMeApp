@@ -1633,17 +1633,21 @@ containing a value of this type.
         public static final int beer=0x7f020033;
         public static final int btn_green_background=0x7f020034;
         public static final int btn_green_text_color=0x7f020035;
-        public static final int btn_red_background=0x7f020036;
-        public static final int btn_red_text_color=0x7f020037;
-        public static final int check_mark=0x7f020038;
-        public static final int edittext_background=0x7f020039;
-        public static final int ic_launcher=0x7f02003a;
-        public static final int ic_menu=0x7f02003b;
-        public static final int logo=0x7f02003c;
-        public static final int paper_plane=0x7f02003d;
-        public static final int text_link_active_layer=0x7f02003e;
-        public static final int text_link_background=0x7f02003f;
-        public static final int text_link_normal_layer=0x7f020040;
+        public static final int btn_menu_background=0x7f020036;
+        public static final int btn_menu_text_color=0x7f020037;
+        public static final int btn_red_background=0x7f020038;
+        public static final int btn_red_text_color=0x7f020039;
+        public static final int check_mark=0x7f02003a;
+        public static final int edittext_background=0x7f02003b;
+        public static final int ic_launcher=0x7f02003c;
+        public static final int ic_menu=0x7f02003d;
+        public static final int ic_menu_white=0x7f02003e;
+        public static final int logo=0x7f02003f;
+        public static final int menu_background=0x7f020040;
+        public static final int paper_plane=0x7f020041;
+        public static final int text_link_active_layer=0x7f020042;
+        public static final int text_link_background=0x7f020043;
+        public static final int text_link_normal_layer=0x7f020044;
     }
     public static final class id {
         public static final int action_bar=0x7f090031;
@@ -1664,8 +1668,10 @@ containing a value of this type.
         public static final int beginning=0x7f09001b;
         public static final int btn_create_lecture=0x7f090046;
         public static final int btn_login=0x7f09004f;
+        public static final int btn_logout=0x7f090061;
         public static final int btn_register=0x7f090052;
         public static final int btn_reload=0x7f090043;
+        public static final int btn_settings=0x7f090060;
         public static final int btn_terms=0x7f09005b;
         public static final int checkbox=0x7f090029;
         public static final int collapseActionView=0x7f090015;
@@ -1681,7 +1687,7 @@ containing a value of this type.
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000e;
         public static final int icon=0x7f090026;
-        public static final int icon_menu=0x7f09005d;
+        public static final int icon_menu=0x7f09005e;
         public static final int ifRoom=0x7f090016;
         public static final int image=0x7f090023;
         public static final int img_logo=0x7f090047;
@@ -1692,7 +1698,7 @@ containing a value of this type.
         public static final int input_password_again=0x7f090058;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090025;
-        public static final int logo=0x7f09005c;
+        public static final int logo=0x7f09005d;
         public static final int middle=0x7f09001d;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
@@ -1700,8 +1706,10 @@ containing a value of this type.
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09002b;
+        public static final int rl_action_bar=0x7f09005c;
         public static final int rl_content_container=0x7f09003f;
         public static final int rl_email_container=0x7f090049;
+        public static final int rl_menu=0x7f09005f;
         public static final int rl_name_container=0x7f090053;
         public static final int rl_no_lectures_container=0x7f090044;
         public static final int rl_password_again_container=0x7f090056;
@@ -1874,10 +1882,10 @@ containing a value of this type.
         public static final int enter_your_students_email=0x7f0a001c;
         /**  API ERRORS 
          */
-        public static final int error_50=0x7f0a0032;
-        public static final int error_51=0x7f0a0033;
-        public static final int error_60=0x7f0a0034;
-        public static final int error_61=0x7f0a0035;
+        public static final int error_50=0x7f0a0034;
+        public static final int error_51=0x7f0a0035;
+        public static final int error_60=0x7f0a0036;
+        public static final int error_61=0x7f0a0037;
         /**  REGISTRATION ACTIVITY 
          */
         public static final int full_name=0x7f0a0019;
@@ -1887,6 +1895,7 @@ containing a value of this type.
         public static final int img_logo=0x7f0a002a;
         public static final int img_paper_plane=0x7f0a002b;
         public static final int login=0x7f0a0014;
+        public static final int logout=0x7f0a0033;
         public static final int menu=0x7f0a002c;
         public static final int no_account=0x7f0a0015;
         /**  LECTURES ACTIVITY 
@@ -1900,6 +1909,9 @@ containing a value of this type.
         public static final int register=0x7f0a001b;
         public static final int register_button=0x7f0a0016;
         public static final int reload_button=0x7f0a0024;
+        /**  MENU 
+         */
+        public static final int settings=0x7f0a0032;
         public static final int terms_button=0x7f0a001e;
         public static final int title_activity_account_activated=0x7f0a0030;
         public static final int title_activity_email_sent=0x7f0a002f;
@@ -2255,6 +2267,9 @@ containing a value of this type.
         /**  Green Button Style 
          */
         public static final int btnStyleGreen=0x7f0b00ed;
+        /**  Menu Button Style 
+         */
+        public static final int btnStyleMenu=0x7f0b00f0;
         /**  Red Button Style 
          */
         public static final int btnStyleRed=0x7f0b00ee;

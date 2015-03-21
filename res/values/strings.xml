@@ -50,6 +50,10 @@
     <string name="title_activity_account_activated">Account Activated</string>
     <string name="title_activity_lectures">Lectures</string>
     
+    <!-- MENU -->
+    <string name="settings">settings</string>
+    <string name="logout">log out</string>
+    
     <!-- API ERRORS -->
     <string name="error_50">User with this email address already exists.</string>
     <string name="error_51">A confirmation email has already been sent to this address.</string>

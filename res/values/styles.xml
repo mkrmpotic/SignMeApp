@@ -50,5 +50,19 @@
        <item name="android:minHeight">0dp</item>
        <item name="android:minWidth">0dp</item>
    </style>
+   
+    <!-- Menu Button Style -->
+    <style name="btnStyleMenu" parent="@android:style/Widget.Button">
+       <item name="android:textSize">22sp</item>
+       <item name="android:textColor">@drawable/btn_menu_text_color</item>
+       <item name="android:gravity">center</item>
+       <item name="android:background">@drawable/btn_menu_background</item>
+       <item name="android:paddingLeft">4dp</item>
+       <item name="android:paddingRight">4dp</item>
+       <item name="android:paddingTop">8dp</item>
+       <item name="android:paddingBottom">8dp</item>
+       <item name="android:minHeight">0dp</item>
+       <item name="android:minWidth">0dp</item>
+   </style>
 
 </resources>

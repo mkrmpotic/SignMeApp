@@ -1,25 +1,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/white" >
+    android:layout_height="242dp" >
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/img_logo"
-        android:src="@drawable/logo" />
-    
-    <ImageView
-        android:id="@+id/icon_menu"
-        android:layout_width="60dp"
+    <RelativeLayout
+        android:id="@+id/rl_action_bar"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentRight="true"
-        android:adjustViewBounds="true"
-        android:scaleType="centerInside"
-        android:contentDescription="@string/menu"
-        android:src="@drawable/ic_menu" />
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/img_logo"
+            android:src="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/icon_menu"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/menu"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_menu" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_menu"
+        android:layout_width="match_parent"
+        android:layout_height="182dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/menu_background"
+        android:visibility="invisible" >
+
+        <TextView
+            android:id="@+id/txt_email"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="right"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btn_settings"
+            style="@style/btnStyleMenu"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/txt_email"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/settings" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            style="@style/btnStyleMenu"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/btn_settings"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/logout" />
+    </RelativeLayout>
 
 </RelativeLayout>
