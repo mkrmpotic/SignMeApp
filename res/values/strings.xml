@@ -28,6 +28,11 @@
     <string name="confirmation_email_sent">A confirmation email has been sent to your address.</string>
     <string name="click_on_the_confirmation_link">Please click on the confirmation link to activate your account.</string>
     <string name="reload_button">reload</string>
+    
+    <!-- EMAIL ALREADY SENT ACTIVITY -->
+    <string name="confirmation_email_already_sent">A confirmation email has already been sent to your address.</string>
+    <string name="havent_received_email">If you haven\'t received one yet, tap Resend and we\'ll send you a new one right away.</string>
+    <string name="resend_button">resend</string>
 
     <!-- ACCOUNT ACTIVATED ACTIVITY -->
     <string name="account_has_been_activated">Awesome! Your account has now been activated.</string>
@@ -42,11 +47,13 @@
     <string name="img_logo">App Logo</string>
     <string name="img_paper_plane">Paper Plane Icon</string>
     <string name="menu">Menu</string>
+    <string name="add">Add</string>
 
     <!-- ACTIVITY TITLES -->
     <string name="title_activity_login">Login</string>
     <string name="title_activity_registration">Register</string>
     <string name="title_activity_email_sent">Account Confirmation</string>
+    <string name="title_activity_email_already_sent">Account Already Waiting Confirmation</string>
     <string name="title_activity_account_activated">Account Activated</string>
     <string name="title_activity_lectures">Lectures</string>
     

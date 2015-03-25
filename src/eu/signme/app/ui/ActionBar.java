@@ -11,8 +11,8 @@ import eu.signme.app.R;
 
 public class ActionBar extends RelativeLayout implements OnClickListener {
 	
-	ImageView imgIconMenu;
-	TextView txtEmail;
+	ImageView imgIconLeft, imgIconMenu;
+	TextView txtName;
 	RelativeLayout rlMenu;
 	boolean menuIsShown = false;
 
@@ -33,9 +33,10 @@ public class ActionBar extends RelativeLayout implements OnClickListener {
 
 	protected void init(Context context) {
 		View view = inflate(context, R.layout.element_action_bar, null);
+		imgIconLeft = (ImageView) view.findViewById(R.id.icon_left);
 		imgIconMenu = (ImageView) view.findViewById(R.id.icon_menu);
 		rlMenu = (RelativeLayout) view.findViewById(R.id.rl_menu);
-		txtEmail = (TextView) view.findViewById(R.id.txt_email);
+		txtName = (TextView) view.findViewById(R.id.txt_name);
 		
 		imgIconMenu.setOnClickListener(this);
 		
@@ -68,8 +69,12 @@ public class ActionBar extends RelativeLayout implements OnClickListener {
 		menuIsShown = false;
 	}
 	
-	public void setEmail(String email) {
-		txtEmail.setText(email);
+	public void setName(String name) {
+		txtName.setText(name);
+	}
+	
+	public void showPlusIcon() {
+		imgIconLeft.setVisibility(View.VISIBLE);
 	}
 
 }

@@ -34,6 +34,10 @@
             android:label="@string/title_activity_email_sent" >
         </activity>
         <activity
+            android:name=".EmailAlreadySentActivity"
+            android:label="@string/title_activity_email_already_sent" >
+        </activity>
+        <activity
             android:name=".AccountActivatedActivity"
             android:label="@string/title_activity_account_activated" >
         </activity>

@@ -59,10 +59,10 @@ public class RegistrationActivity extends Activity implements OnClickListener {
 
 			startLoadingAnimation();
 
-			String name = inputName.getText().toString();
-			String email = inputEmail.getText().toString();
-			String password = inputPassword.getText().toString();
-			String passwordAgain = inputPasswordAgain.getText().toString();
+			final String name = inputName.getText().toString();
+			final String email = inputEmail.getText().toString();
+			final String password = inputPassword.getText().toString();
+			final String passwordAgain = inputPasswordAgain.getText().toString();
 
 			if (name.length() > 0 && email.length() > 0
 					&& password.length() > 0 && passwordAgain.length() > 0)
@@ -97,16 +97,26 @@ public class RegistrationActivity extends Activity implements OnClickListener {
 														.fromJson(
 																json,
 																ErrorResponse.class);
+												int errorStatus = errorObject.getStatus();
 
 												int stringResource = getResources()
 														.getIdentifier(
 																"error_"
 																		+ Integer
-																				.toString(errorObject
-																						.getStatus()),
+																				.toString(errorStatus),
 																"string",
 																getPackageName());
-												txtError.setText(stringResource);
+												// if email is already sent to that address
+												if (errorStatus == 51) {
+													Intent intent = new Intent(RegistrationActivity.this,
+															EmailAlreadySentActivity.class);
+													intent.putExtra("email", email);
+													intent.putExtra("password", password);
+													startActivity(intent);
+													finish();
+												} else {
+													txtError.setText(stringResource);
+												}
 
 											} catch (UnsupportedEncodingException e) {
 												// TODO Auto-generated catch
@@ -152,7 +162,7 @@ public class RegistrationActivity extends Activity implements OnClickListener {
 
 		// initialize the TimerTask's job
 		initializeLoadingTimerTask();
-		timer.schedule(timerTask, 0, 150); //
+		timer.schedule(timerTask, 0, 200); //
 	}
 
 	public void stopLoadingAnimation() {
@@ -169,20 +179,12 @@ public class RegistrationActivity extends Activity implements OnClickListener {
 
 		timerTask = new TimerTask() {
 			public void run() {
-				if (btnRegister.getText() == "register") {
-					setLoadingText("registeri");
-				} else if (btnRegister.getText() == "registeri") {
-					setLoadingText("registerin");
-				} else if (btnRegister.getText() == "registerin") {
-					setLoadingText("registering");
-				} else if (btnRegister.getText() == "registering") {
-					setLoadingText("registering.");
-				} else if (btnRegister.getText() == "registering.") {
-					setLoadingText("registering..");
-				} else if (btnRegister.getText() == "registering..") {
-					setLoadingText("registering...");
+				if (btnRegister.getText() == ".") {
+					setLoadingText("..");
+				} else if (btnRegister.getText() == "..") {
+					setLoadingText("...");
 				} else {
-					setLoadingText("registering");
+					setLoadingText(".");
 				}
 			}
 		};

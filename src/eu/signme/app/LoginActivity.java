@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ import eu.signme.app.api.response.LoginResponse;
 import eu.signme.app.util.Utils;
 
 public class LoginActivity extends Activity implements OnClickListener {
+	
+	
 
 	private Button btnLogin, btnRegister;
 	private EditText inputEmail, inputPassword;
@@ -69,9 +72,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 					@Override
 					public void onSuccess(LoginResponse response) {
 						stopLoadingAnimation();
+						Utils.saveToPrefs("token", response.getToken());
+						Utils.saveToPrefs("name", response.getName());
 						Intent intent = new Intent(LoginActivity.this,
 								LecturesActivity.class);
-						intent.putExtra("email", email);
 						startActivity(intent);
 						finish();
 					}
@@ -132,7 +136,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		// initialize the TimerTask's job
 		initializeLoadingTimerTask();
-		timer.schedule(timerTask, 0, 150); //
+		timer.schedule(timerTask, 0, 200); //
 	}
 
 	public void stopLoadingAnimation() {
@@ -146,26 +150,18 @@ public class LoginActivity extends Activity implements OnClickListener {
 	}
 
 	public void initializeLoadingTimerTask() {
-
 		timerTask = new TimerTask() {
 			public void run() {
-				if (btnLogin.getText() == "loggin") {
-					setLoadingText("logging");
-				} else if (btnLogin.getText() == "logging") {
-					setLoadingText("logging i");
-				} else if (btnLogin.getText() == "logging i") {
-					setLoadingText("logging in");
-				} else if (btnLogin.getText() == "logging in") {
-					setLoadingText("logging in.");
-				} else if (btnLogin.getText() == "logging in.") {
-					setLoadingText("logging in..");
-				} else if (btnLogin.getText() == "logging in..") {
-					setLoadingText("logging in...");
+				if (btnLogin.getText() == ".") {
+					setLoadingText("..");
+				} else if (btnLogin.getText() == "..") {
+					setLoadingText("...");
 				} else {
-					setLoadingText("loggin");
+					setLoadingText(".");
 				}
 			}
 		};
 	}
+	
 
 }

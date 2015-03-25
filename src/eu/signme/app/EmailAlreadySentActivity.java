@@ -1,0 +1,93 @@
+package eu.signme.app;
+
+import java.io.UnsupportedEncodingException;
+
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.google.gson.Gson;
+
+import eu.signme.app.api.SignMeAPI;
+import eu.signme.app.api.SignMeAPI.LoginHandler;
+import eu.signme.app.api.response.ErrorResponse;
+import eu.signme.app.api.response.LoginResponse;
+import eu.signme.app.util.Utils;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class EmailAlreadySentActivity extends Activity implements OnClickListener {
+	
+	private Button btnResend, btnReload;
+	
+	private String email, password;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_email_already_sent);
+		
+		Intent i = getIntent();
+		email = i.getExtras().getString("email");
+		password = i.getExtras().getString("password");
+		
+		bindViews();
+	}
+	
+	private void bindViews() {
+		btnResend = (Button) findViewById(R.id.btn_resend);
+		btnReload = (Button) findViewById(R.id.btn_reload);
+
+		btnResend.setOnClickListener(this);
+		btnReload.setOnClickListener(this);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_resend:
+			break;
+		case R.id.btn_reload:
+			SignMeAPI.login(email, password, new LoginHandler() {
+
+				@Override
+				public void onSuccess(LoginResponse response) {
+					Utils.saveToPrefs("token", response.getToken());
+					Utils.saveToPrefs("name", response.getName());
+					Intent intent = new Intent(EmailAlreadySentActivity.this,
+							LecturesActivity.class);
+					startActivity(intent);
+					finish();
+				}
+
+				@Override
+				public void onError(VolleyError error) {
+					try {
+						String json = new String(
+								error.networkResponse.data,
+								HttpHeaderParser
+										.parseCharset(error.networkResponse.headers));
+						ErrorResponse errorObject = new Gson().fromJson(
+								json, ErrorResponse.class);
+
+						int stringResource = getResources().getIdentifier(
+								"error_"
+										+ Integer.toString(errorObject
+												.getStatus()), "string",
+								getPackageName());
+
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				}
+			});
+			break;
+		}
+	}
+}

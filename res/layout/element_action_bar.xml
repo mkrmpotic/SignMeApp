@@ -9,6 +9,17 @@
         android:background="@color/white" >
 
         <ImageView
+            android:id="@+id/icon_left"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/add"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_plus"
+            android:visibility="invisible" />
+
+        <ImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -39,7 +50,7 @@
         android:visibility="invisible" >
 
         <TextView
-            android:id="@+id/txt_email"
+            android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="right"
@@ -52,7 +63,7 @@
             style="@style/btnStyleMenu"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/txt_email"
+            android:layout_below="@id/txt_name"
             android:fontFamily="sans-serif-light"
             android:text="@string/settings" />
 
