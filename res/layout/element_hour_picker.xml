@@ -1,0 +1,110 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/btn_08"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_08" />
+
+    <Button
+        android:id="@+id/btn_09"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_09" />
+
+    <Button
+        android:id="@+id/btn_10"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_10" />
+
+    <Button
+        android:id="@+id/btn_11"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_11" />
+
+    <Button
+        android:id="@+id/btn_12"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_12" />
+
+    <Button
+        android:id="@+id/btn_13"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_13" />
+
+    <Button
+        android:id="@+id/btn_14"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_14" />
+
+    <Button
+        android:id="@+id/btn_15"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_15" />
+
+    <Button
+        android:id="@+id/btn_16"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_16" />
+
+    <Button
+        android:id="@+id/btn_17"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_17" />
+
+    <Button
+        android:id="@+id/btn_18"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_18" />
+
+    <Button
+        android:id="@+id/btn_19"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_19" />
+
+    <Button
+        android:id="@+id/btn_20"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_20" />
+
+</LinearLayout>

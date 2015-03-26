@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/btn_today"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="@string/today" />
+
+    <Button
+        android:id="@+id/btn_tomorrow"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="@string/tomorrow" />
+
+</LinearLayout>

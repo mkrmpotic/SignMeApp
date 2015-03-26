@@ -28,7 +28,7 @@
     <string name="confirmation_email_sent">A confirmation email has been sent to your address.</string>
     <string name="click_on_the_confirmation_link">Please click on the confirmation link to activate your account.</string>
     <string name="reload_button">reload</string>
-    
+
     <!-- EMAIL ALREADY SENT ACTIVITY -->
     <string name="confirmation_email_already_sent">A confirmation email has already been sent to your address.</string>
     <string name="havent_received_email">If you haven\'t received one yet, tap Resend and we\'ll send you a new one right away.</string>
@@ -38,10 +38,35 @@
     <string name="account_has_been_activated">Awesome! Your account has now been activated.</string>
     <string name="you_may_start">You may start using the app.</string>
     <string name="continue_button">continue</string>
-    
+
     <!-- LECTURES ACTIVITY -->
     <string name="no_active_lectures">There are no active lectures at the moment.</string>
     <string name="create_lecture_button">create a lecture</string>
+
+    <!-- NEW LECTURE DIALOG -->
+    <string name="new_lecture">new lecture:</string>
+    <string name="starts">starts:</string>
+    <string name="today">today</string>
+    <string name="tomorrow">tomorrow</string>
+    <string name="at_approx">at approx:</string>
+    <string name="ends_at_approx">ends at approx:</string>
+    <string name="o_clock">o\'clock</string>
+    <string name="create">create</string>
+    
+    <!-- HOUR PICKER -->
+    <string name="hour_08">8</string>
+    <string name="hour_09">9</string>
+    <string name="hour_10">10</string>
+    <string name="hour_11">11</string>
+    <string name="hour_12">12</string>
+    <string name="hour_13">13</string>
+    <string name="hour_14">14</string>
+    <string name="hour_15">15</string>
+    <string name="hour_16">16</string>
+    <string name="hour_17">17</string>
+    <string name="hour_18">18</string>
+    <string name="hour_19">19</string>
+    <string name="hour_20">20</string>
 
     <!-- CONTENT DESCRIPTIONS -->
     <string name="img_logo">App Logo</string>
@@ -56,11 +81,11 @@
     <string name="title_activity_email_already_sent">Account Already Waiting Confirmation</string>
     <string name="title_activity_account_activated">Account Activated</string>
     <string name="title_activity_lectures">Lectures</string>
-    
+
     <!-- MENU -->
     <string name="settings">settings</string>
     <string name="logout">log out</string>
-    
+
     <!-- API ERRORS -->
     <string name="error_50">User with this email address already exists.</string>
     <string name="error_51">A confirmation email has already been sent to this address.</string>

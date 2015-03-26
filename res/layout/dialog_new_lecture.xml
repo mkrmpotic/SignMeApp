@@ -1,0 +1,161 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_green_background"
+    android:paddingBottom="25dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingTop="10dp" >
+
+    <TextView
+        android:id="@+id/txt_new_lecture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif"
+        android:text="@string/new_lecture"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_new_lecture"
+        android:background="@drawable/edittext_bold_background"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:inputType="textCapSentences"
+        android:paddingBottom="2dp"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txt_starts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_name"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/starts"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/hsv_day_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_starts"
+        android:background="@drawable/hour_picker_background"
+        android:padding="1dp"
+        android:scrollbars="none" >
+
+        <eu.signme.app.ui.DayPicker
+            android:id="@+id/day_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/txt_at_approx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hsv_day_picker"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/at_approx"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_start_hours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_at_approx" >
+
+        <TextView
+            android:id="@+id/txt_start_oclock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/o_clock"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_start_hours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/txt_start_oclock"
+            android:background="@drawable/hour_picker_background"
+            android:padding="1dp"
+            android:scrollbars="none" >
+
+            <eu.signme.app.ui.HourPicker
+                android:id="@+id/start_hour_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_ends_at_approx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_start_hours"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/ends_at_approx"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_end_hours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_ends_at_approx" >
+
+        <TextView
+            android:id="@+id/txt_end_oclock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/o_clock"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_end_hours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/txt_end_oclock"
+            android:background="@drawable/hour_picker_background"
+            android:padding="1dp"
+            android:scrollbars="none" >
+
+            <eu.signme.app.ui.HourPicker
+                android:id="@+id/end_hour_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_create"
+        style="@style/btnStyleWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_end_hours"
+        android:layout_marginTop="25dp"
+        android:text="@string/create" />
+
+</RelativeLayout>
