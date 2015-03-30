@@ -3,6 +3,8 @@ package eu.signme.app.api.request;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -11,10 +13,11 @@ import com.android.volley.Response;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonRequest;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-public class GsonRequest<T> extends Request<T> {
+public class GsonRequest<T> extends JsonRequest<T> {
 	private final Gson gson = new Gson();
 	private final Class<T> clazz;
 	private final Map<String, String> headers;
@@ -31,34 +34,16 @@ public class GsonRequest<T> extends Request<T> {
 	 * @param headers
 	 *            Map of request headers
 	 */
-	public GsonRequest(String url, Class<T> clazz, Map<String, String> headers,
+	public GsonRequest(int method, String url, JSONObject jsonRequest, Class<T> clazz, Map<String, String> headers,
 			Listener<T> listener, ErrorListener errorListener) {
-		super(Method.GET, url, errorListener);
+		super(method, url, (jsonRequest == null) ? null : jsonRequest.toString(), listener, errorListener);
 		this.clazz = clazz;
 		this.headers = headers;
 		this.listener = listener;
 		this.params = null;
 	}
 
-	/**
-	 * Make a POST request and return a parsed object from JSON.
-	 * 
-	 * @param url
-	 *            URL of the request to make
-	 * @param clazz
-	 *            Relevant class object, for Gson's reflection
-	 * @param headers
-	 *            Map of request headers
-	 */
-	public GsonRequest(int method, String url, Class<T> clazz,
-			Map<String, String> params, Listener<T> listener,
-			ErrorListener errorListener) {
-		super(method, url, errorListener);
-		this.clazz = clazz;
-		this.params = params;
-		this.listener = listener;
-		this.headers = null;
-	}
+
 
 	@Override
 	public Map<String, String> getHeaders() throws AuthFailureError {
@@ -77,7 +62,7 @@ public class GsonRequest<T> extends Request<T> {
 
 	@Override
 	protected Response<T> parseNetworkResponse(NetworkResponse response) {
-		//if (response.statusCode)
+		// if (response.statusCode)
 		try {
 			String json = new String(response.data,
 					HttpHeaderParser.parseCharset(response.headers));

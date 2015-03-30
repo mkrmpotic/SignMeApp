@@ -39,6 +39,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		if (!Utils.getStringFromPrefs("token").equals("none")) {
+			Intent intent = new Intent(LoginActivity.this,
+					LecturesActivity.class);
+			startActivity(intent);
+			finish();
+		}
 
 		bindViews();
 
@@ -74,6 +81,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 						stopLoadingAnimation();
 						Utils.saveToPrefs("token", response.getToken());
 						Utils.saveToPrefs("name", response.getName());
+						Utils.saveToPrefs("id", response.getId());
+						Utils.saveToPrefs("beers", response.getBeers());
 						Intent intent = new Intent(LoginActivity.this,
 								LecturesActivity.class);
 						startActivity(intent);

@@ -16,75 +16,87 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
+
     <!-- Green Button Style -->
     <style name="btnStyleGreen" parent="@android:style/Widget.Button">
-       <item name="android:textSize">22sp</item>
-       <item name="android:textStyle">bold</item>
-       <item name="android:textColor">@drawable/btn_green_text_color</item>
-       <item name="android:gravity">center</item>
-       <item name="android:background">@drawable/btn_green_background</item>
-       <item name="android:padding">8dp</item>
-       <item name="android:minHeight">0dp</item>
-       <item name="android:minWidth">0dp</item>
-   </style>
-   
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@drawable/btn_green_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_green_background</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
     <!-- Red Button Style -->
     <style name="btnStyleRed" parent="@android:style/Widget.Button">
-       <item name="android:textSize">22sp</item>
-       <item name="android:textStyle">bold</item>
-       <item name="android:textColor">@drawable/btn_red_text_color</item>
-       <item name="android:gravity">center</item>
-       <item name="android:background">@drawable/btn_red_background</item>
-       <item name="android:padding">8dp</item>
-       <item name="android:minHeight">0dp</item>
-       <item name="android:minWidth">0dp</item>
-   </style>
-   
-    <!-- White Button Style -->
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@drawable/btn_red_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_red_background</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <!-- White Button Style with green bg -->
     <style name="btnStyleWhite" parent="@android:style/Widget.Button">
-       <item name="android:textSize">22sp</item>
-       <item name="android:textStyle">bold</item>
-       <item name="android:textColor">@drawable/btn_white_text_color</item>
-       <item name="android:gravity">center</item>
-       <item name="android:background">@drawable/btn_white_background</item>
-       <item name="android:padding">8dp</item>
-       <item name="android:minHeight">0dp</item>
-       <item name="android:minWidth">0dp</item>
-   </style>
-   
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@drawable/btn_white_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_white_background</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <!-- White Button Style with yellow bg -->
+    <style name="btnStyleWhiteYellow" parent="@android:style/Widget.Button">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@drawable/btn_white_yellow_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_white_background</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
     <!-- Text Link Style -->
     <style name="btnStyleTextLink" parent="@android:style/Widget.Button">
-       <item name="android:textSize">14sp</item>
-       <item name="android:textStyle">bold</item>
-       <item name="android:textColor">@color/signme_red</item>
-       <item name="android:background">@drawable/text_link_background</item>
-       <item name="android:minHeight">0dp</item>
-       <item name="android:minWidth">0dp</item>
-   </style>
-   
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/signme_red</item>
+        <item name="android:background">@drawable/text_link_background</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
     <!-- Menu Button Style -->
     <style name="btnStyleMenu" parent="@android:style/Widget.Button">
-       <item name="android:textSize">22sp</item>
-       <item name="android:textColor">@drawable/btn_menu_text_color</item>
-       <item name="android:gravity">center</item>
-       <item name="android:background">@drawable/btn_menu_background</item>
-       <item name="android:paddingLeft">4dp</item>
-       <item name="android:paddingRight">4dp</item>
-       <item name="android:paddingTop">8dp</item>
-       <item name="android:paddingBottom">8dp</item>
-       <item name="android:minHeight">0dp</item>
-       <item name="android:minWidth">0dp</item>
-   </style>
-   
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@drawable/btn_menu_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_menu_background</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
     <!-- Hour Picker Button Style -->
     <style name="btnStyleHourPicker" parent="@android:style/Widget.Button">
-       <item name="android:textSize">24sp</item>
-       <item name="android:textColor">@drawable/btn_menu_text_color</item>
-       <item name="android:gravity">center</item>
-       <item name="android:background">@drawable/btn_menu_background</item>
-       <item name="android:minHeight">0dp</item>
-       <item name="android:minWidth">0dp</item>
-   </style>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@drawable/btn_menu_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_menu_background</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
 
 </resources>

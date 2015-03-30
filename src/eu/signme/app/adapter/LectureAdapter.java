@@ -56,11 +56,9 @@ public class LectureAdapter extends BaseAdapter {
 				.findViewById(R.id.txt_count);
 
 		if (position % 2 == 0) {
-			convertView.setBackgroundColor(activity.getResources().getColor(
-					R.color.gray_background));
+			convertView.setBackgroundResource(R.drawable.listrow_dark_background);
 		} else {
-			convertView.setBackgroundColor(activity.getResources().getColor(
-					R.color.light_gray_background));
+			convertView.setBackgroundResource(R.drawable.listrow_light_background);
 		}
 
 		// Getting lecture data from a row
@@ -70,7 +68,7 @@ public class LectureAdapter extends BaseAdapter {
 		txtName.setText(lecture.getName());
 
 		// Day of a lecture
-		txtDay.setText(Utils.getRelativeDay(lecture.getStartHour()));
+		txtDay.setText(Utils.getRelativeDay(lecture.getDate()));
 		
 		// Number of requested signatures
 		txtCount.setText(Integer.toString(lecture.getSignCount()));

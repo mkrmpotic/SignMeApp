@@ -42,6 +42,14 @@
     <!-- LECTURES ACTIVITY -->
     <string name="no_active_lectures">There are no active lectures at the moment.</string>
     <string name="create_lecture_button">create a lecture</string>
+    
+    <!-- LECTURE ACTIVITY -->
+    <string name="starts_at">%1$s at %2$s o\'clock</string>
+    <string name="sign_me">sign me!</string>
+    <string name="no_signature_requests">There are no signature requests here at the moment. Ask for one!</string>
+    
+    <!-- MY PROFILE ACTIVITY -->
+    <string name="change_password">change password</string>
 
     <!-- NEW LECTURE DIALOG -->
     <string name="new_lecture">new lecture:</string>
@@ -52,6 +60,16 @@
     <string name="ends_at_approx">ends at approx:</string>
     <string name="o_clock">o\'clock</string>
     <string name="create">create</string>
+    
+    <!-- EDIT NAME DIALOG -->
+    <string name="edit_name">edit name:</string>
+    <string name="save">save</string>
+    
+    <!-- CHANGE PASSWORD DIALOG -->
+    <string name="current_password">current password:</string>
+    <string name="new_password">new password:</string>
+    <string name="new_password_again">new password again:</string>
+    <string name="submit">submit</string>
     
     <!-- HOUR PICKER -->
     <string name="hour_08">8</string>
@@ -67,6 +85,7 @@
     <string name="hour_18">18</string>
     <string name="hour_19">19</string>
     <string name="hour_20">20</string>
+    <string name="hour_21">21</string>
 
     <!-- CONTENT DESCRIPTIONS -->
     <string name="img_logo">App Logo</string>
@@ -75,12 +94,15 @@
     <string name="add">Add</string>
 
     <!-- ACTIVITY TITLES -->
+    <string name="title_activity_splash">Welcome</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_registration">Register</string>
     <string name="title_activity_email_sent">Account Confirmation</string>
     <string name="title_activity_email_already_sent">Account Already Waiting Confirmation</string>
     <string name="title_activity_account_activated">Account Activated</string>
     <string name="title_activity_lectures">Lectures</string>
+    <string name="title_activity_lecture">Lecture</string>
+    <string name="title_activity_my_profile">My Profile</string>
 
     <!-- MENU -->
     <string name="settings">settings</string>
@@ -91,5 +113,6 @@
     <string name="error_51">A confirmation email has already been sent to this address.</string>
     <string name="error_60">Your account has not yet been activated.</string>
     <string name="error_61">Unable to login with provided credentials.</string>
+    <string name="error_170">The current password you have entered is incorrect.</string>
 
 </resources>

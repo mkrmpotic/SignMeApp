@@ -7,10 +7,10 @@ public class Lecture {
 	private String name;
 	private String date;
 
-	@SerializedName("start_hour")
+	@SerializedName("start_time")
 	private String startHour;
 
-	@SerializedName("end_hour")
+	@SerializedName("end_time")
 	private String endHour;
 	
 	@SerializedName("count_student_want_sign")
@@ -62,5 +62,10 @@ public class Lecture {
 
 	public void setSignCount(int signCount) {
 		this.signCount = signCount;
+	}
+	
+	public String getRoundStartHour() {
+		String[] time = startHour.split("-");
+		return time[0].replaceFirst("^0+(?!$)", "");
 	}
 }

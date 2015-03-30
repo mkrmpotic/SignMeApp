@@ -4,7 +4,7 @@
     android:orientation="horizontal" >
 
     <Button
-        android:id="@+id/btn_08"
+        android:id="@+id/btn_8"
         style="@style/btnStyleHourPicker"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -12,7 +12,7 @@
         android:text="@string/hour_08" />
 
     <Button
-        android:id="@+id/btn_09"
+        android:id="@+id/btn_9"
         style="@style/btnStyleHourPicker"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -106,5 +106,13 @@
         android:layout_height="35dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/hour_20" />
+    
+    <Button
+        android:id="@+id/btn_21"
+        style="@style/btnStyleHourPicker"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/hour_21" />
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,11 +17,13 @@ public class ActionBar extends RelativeLayout implements OnClickListener {
 	}
 
 	public static final int ICON_LEFT = 0;
-	
+	public static final int SETTINGS = 1;
+	public static final int LOGOUT = 2;
+
 	ActionBarListener actionBarListener = null;
 
 	ImageView imgIconLeft, imgIconMenu;
-	TextView txtName;
+	TextView txtName, txtBeerCount;
 	RelativeLayout rlMenu;
 	boolean menuIsShown = false;
 
@@ -45,9 +48,14 @@ public class ActionBar extends RelativeLayout implements OnClickListener {
 		imgIconMenu = (ImageView) view.findViewById(R.id.icon_menu);
 		rlMenu = (RelativeLayout) view.findViewById(R.id.rl_menu);
 		txtName = (TextView) view.findViewById(R.id.txt_name);
+		txtBeerCount = (TextView) view.findViewById(R.id.txt_beer_count);
+		Button btnSettings = (Button) view.findViewById(R.id.btn_settings);
+		Button btnLogout = (Button) view.findViewById(R.id.btn_logout);
 
-		imgIconLeft.setOnClickListener(this);
+		rlMenu.setOnClickListener(this);
 		imgIconMenu.setOnClickListener(this);
+		btnSettings.setOnClickListener(this);
+		btnLogout.setOnClickListener(this);
 
 		addView(view);
 	}
@@ -62,11 +70,19 @@ public class ActionBar extends RelativeLayout implements OnClickListener {
 				showMenu();
 			break;
 		case R.id.icon_left:
-				actionBarListener.onMenuItemClicked(ICON_LEFT);
+			actionBarListener.onMenuItemClicked(ICON_LEFT);
+			break;
+		case R.id.btn_settings:
+			actionBarListener.onMenuItemClicked(SETTINGS);
+			break;
+		case R.id.btn_logout:
+			actionBarListener.onMenuItemClicked(LOGOUT);
+			break;
+		default:
 			break;
 		}
 	}
-	
+
 	public void setActionBarListener(ActionBarListener listener) {
 		actionBarListener = listener;
 	}
@@ -79,11 +95,16 @@ public class ActionBar extends RelativeLayout implements OnClickListener {
 		menuIsShown = true;
 	}
 
-	private void hideMenu() {
+	public void hideMenu() {
 		imgIconMenu.setBackgroundColor(getResources().getColor(R.color.white));
 		imgIconMenu.setImageResource(R.drawable.ic_menu);
 		rlMenu.setVisibility(View.INVISIBLE);
 		menuIsShown = false;
+	}
+
+	public void setNameAndBeer(String name, int beer) {
+		txtName.setText(name);
+		txtBeerCount.setText(Integer.toString(beer));
 	}
 
 	public void setName(String name) {
@@ -91,6 +112,13 @@ public class ActionBar extends RelativeLayout implements OnClickListener {
 	}
 
 	public void showPlusIcon() {
+		imgIconLeft.setOnClickListener(this);
+		imgIconLeft.setVisibility(View.VISIBLE);
+	}
+
+	public void showBackIcon() {
+		imgIconLeft.setOnClickListener(this);
+		imgIconLeft.setImageResource(R.drawable.ic_back);
 		imgIconLeft.setVisibility(View.VISIBLE);
 	}
 

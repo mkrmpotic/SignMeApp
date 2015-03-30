@@ -13,14 +13,14 @@
 
             <stroke android:width="2dp" android:color="@color/white" />
 
-            <solid android:color="@color/signme_green" />
+            <solid android:color="@color/transparent" />
         </shape></item>
     <item><shape android:shape="rectangle">
             <corners android:radius="1dp" />
 
             <stroke android:width="2dp" android:color="@color/white" />
 
-            <solid android:color="@color/signme_green" />
+            <solid android:color="@color/transparent" />
         </shape></item>
 
 </selector>

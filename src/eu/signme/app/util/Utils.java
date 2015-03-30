@@ -37,6 +37,23 @@ public class Utils {
 	}
 
 	/**
+	 * Save an int in SharedPreferences
+	 * 
+	 * @param key
+	 * @param value
+	 * @author Marin
+	 * 
+	 */
+	public static void saveToPrefs(String key, int value) {
+		SharedPreferences settings = SignMeApp.getAppContext()
+				.getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putInt(key, value);
+
+		editor.commit();
+	}
+
+	/**
 	 * Get a string from SharedPreferences
 	 * 
 	 * @param key
@@ -44,11 +61,35 @@ public class Utils {
 	 * @author Marin
 	 * 
 	 */
-	public static String getFromPrefs(String key) {
+	public static String getStringFromPrefs(String key) {
 		SharedPreferences settings = SignMeApp.getAppContext()
 				.getSharedPreferences(PREFS_NAME, 0);
 
 		return settings.getString(key, "none");
+	}
+
+	/**
+	 * Get an int from SharedPreferences
+	 * 
+	 * @param key
+	 * @return value
+	 * @author Marin
+	 * 
+	 */
+	public static int getIntFromPrefs(String key) {
+		SharedPreferences settings = SignMeApp.getAppContext()
+				.getSharedPreferences(PREFS_NAME, 0);
+
+		return settings.getInt(key, 0);
+	}
+
+	public static void clearPrefs() {
+		SharedPreferences settings = SignMeApp.getAppContext()
+				.getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+
+		editor.clear();
+		editor.commit();
 	}
 
 	/**
@@ -61,8 +102,7 @@ public class Utils {
 	 */
 	public static String getRelativeDay(String dateString) {
 		Date date = null;
-		SimpleDateFormat format = new SimpleDateFormat(
-				"yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 		try {
 			date = format.parse(dateString);
 		} catch (ParseException e) {

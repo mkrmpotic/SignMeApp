@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/img_signature"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="80dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/circle"
+        android:contentDescription="@string/img_logo"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_signature"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Marin Krmpotić"
+        android:textColor="@color/dark_gray_text"
+        android:textSize="26sp" />
+
+    <ImageButton
+        android:id="@+id/btn_edit_name"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/img_signature"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@id/txt_name"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_edit" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_name"
+        android:layout_marginTop="10dp" >
+
+        <ImageView
+            android:id="@+id/img_beer"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/img_logo"
+            android:src="@drawable/beer2"
+            android:paddingLeft="15dp" />
+
+        <TextView
+            android:id="@+id/txt_beers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="142"
+            android:textColor="@color/light_gray_background"
+            android:textSize="28sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_change_password"
+        style="@style/btnStyleRed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/rl_password_container"
+        android:layout_margin="30dp"
+        android:text="@string/change_password" />
+
+    <eu.signme.app.ui.ActionBar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="242dp" />
+
+</RelativeLayout>

@@ -49,5 +49,13 @@ public class DayPicker extends LinearLayout implements OnClickListener {
 	public void setDayPickerListener(DayPickerListener listener) {
 		dayPickerListener = listener;
 	}
+	
+	public boolean getDay() {
+		if (selected.getId() == R.id.btn_today) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }
