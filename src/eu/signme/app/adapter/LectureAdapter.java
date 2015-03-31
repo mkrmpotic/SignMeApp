@@ -2,78 +2,78 @@ package eu.signme.app.adapter;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 import eu.signme.app.R;
 import eu.signme.app.model.Lecture;
+import eu.signme.app.ui.swipe.OnItemClickListener;
 import eu.signme.app.util.Utils;
+import eu.signme.app.viewholder.LecturesRowHolder;
 
-public class LectureAdapter extends BaseAdapter {
-	private Activity activity;
-	private LayoutInflater inflater;
+public class LectureAdapter extends RecyclerView.Adapter<LecturesRowHolder> {
+
 	private List<Lecture> lectures;
+	private Context mContext;
+	private OnItemClickListener clickListener = null;
 
-	public LectureAdapter(Activity activity, List<Lecture> lectures) {
-		this.activity = activity;
+	public LectureAdapter(Context context, List<Lecture> lectures) {
 		this.lectures = lectures;
+		this.mContext = context;
 	}
 
 	@Override
-	public int getCount() {
-		return lectures.size();
+	public LecturesRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+		View v = LayoutInflater.from(viewGroup.getContext()).inflate(
+				R.layout.lectures_item, viewGroup, false);
+		LecturesRowHolder mh = new LecturesRowHolder(v, clickListener);
+
+		return mh;
 	}
 
 	@Override
-	public Object getItem(int location) {
-		return lectures.get(location);
-	}
+	public void onBindViewHolder(LecturesRowHolder feedListRowHolder, int i) {
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
-
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		if (inflater == null)
-			inflater = (LayoutInflater) activity
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		if (convertView == null)
-			convertView = inflater.inflate(R.layout.lectures_item, parent,
-					false);
-
-		TextView txtName = (TextView) convertView
-				.findViewById(R.id.txt_name);
-		TextView txtDay = (TextView) convertView
-				.findViewById(R.id.txt_day);
-		TextView txtCount = (TextView) convertView
-				.findViewById(R.id.txt_count);
-
-		if (position % 2 == 0) {
-			convertView.setBackgroundResource(R.drawable.listrow_dark_background);
+		feedListRowHolder.setPosition(i);
+		
+		if (i % 2 == 0) {
+			feedListRowHolder.view
+					.setBackgroundResource(R.drawable.listrow_dark_background);
 		} else {
-			convertView.setBackgroundResource(R.drawable.listrow_light_background);
+			feedListRowHolder.view
+					.setBackgroundResource(R.drawable.listrow_light_background);
 		}
 
 		// Getting lecture data from a row
-		Lecture lecture = lectures.get(position);
+		Lecture lecture = lectures.get(i);
 
 		// Name of a lecture
-		txtName.setText(lecture.getName());
+		feedListRowHolder.txtName.setText(lecture.getName());
 
 		// Day of a lecture
-		txtDay.setText(Utils.getRelativeDay(lecture.getDate()));
-		
-		// Number of requested signatures
-		txtCount.setText(Integer.toString(lecture.getSignCount()));
+		feedListRowHolder.txtDay
+				.setText(Utils.getRelativeDay(lecture.getDate()));
 
-		return convertView;
+		// Number of requested signatures
+		feedListRowHolder.txtCount.setText(Integer.toString(lecture
+				.getSignCount()));
+
+	}
+
+	@Override
+	public int getItemCount() {
+		return (null != lectures ? lectures.size() : 0);
+	}
+	
+	public void setOnItemClickListener(OnItemClickListener listener) {
+		this.clickListener = listener;
+	}
+	
+	public Lecture getItem(int location) {
+		return lectures.get(location);
 	}
 
 }

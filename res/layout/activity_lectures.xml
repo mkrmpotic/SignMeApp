@@ -45,14 +45,19 @@
         android:layout_margin="30dp"
         android:text="@string/create_lecture_button" />
 
-    <ListView
-        android:id="@+id/list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_lectures"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
-        android:background="@color/gray_background"
-        android:divider="@null"
-        android:dividerHeight="0dp" />
+        android:layout_marginTop="60dp" >
+
+        <view
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="android.support.v7.widget.RecyclerView"
+            android:background="@color/gray_background" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <eu.signme.app.ui.ActionBar
         android:id="@+id/action_bar"

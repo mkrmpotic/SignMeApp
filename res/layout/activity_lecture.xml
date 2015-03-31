@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:padding="30dp"
-        android:visibility="invisible" >
+        android:visibility="gone" >
 
         <Button
             android:id="@+id/btn_sign_me"
@@ -104,15 +104,20 @@
             android:text="@string/sign_me" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_signatures"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/rl_sign_me"
-        android:layout_below="@id/rl_lecture_header"
-        android:background="@color/gray_background"
-        android:divider="@null"
-        android:dividerHeight="0dp" />
+         android:layout_below="@id/rl_lecture_header"
+         android:layout_above="@id/rl_sign_me" >
+
+        <view
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="android.support.v7.widget.RecyclerView"
+            android:background="@color/gray_background" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <eu.signme.app.ui.ActionBar
         android:id="@+id/action_bar"

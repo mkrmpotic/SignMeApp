@@ -9,6 +9,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +23,8 @@ import com.android.volley.VolleyError;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import eu.signme.app.adapter.LectureAdapter;
+import eu.signme.app.adapter.LectureAdapter2;
+import eu.signme.app.adapter.SignatureAdapter;
 import eu.signme.app.api.SignMeAPI;
 import eu.signme.app.api.SignMeAPI.CreateLectureHandler;
 import eu.signme.app.api.SignMeAPI.GetLecturesHandler;
@@ -41,10 +47,13 @@ public class LecturesActivity extends FragmentActivity implements
 	String PROJECT_NUMBER = "513360053176";
 
 	private ActionBar actionBar;
-	private ListView lwLectures;
-	private LectureAdapter adapter;
 	private List<Lecture> lectures = new ArrayList<Lecture>();
 	private NewLectureDialog editNameDialog;
+	
+	private RecyclerView mRecyclerView;
+	private LectureAdapter adapter;
+	
+	private SwipeRefreshLayout swipeRefreshLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,10 +120,42 @@ public class LecturesActivity extends FragmentActivity implements
 
 	private void bindViews() {
 		actionBar = (ActionBar) findViewById(R.id.action_bar);
-		lwLectures = (ListView) findViewById(R.id.list);
-
-		adapter = new LectureAdapter(this, lectures);
-		lwLectures.setAdapter(adapter);
+		
+		swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_lectures);
+		swipeRefreshLayout.setColorSchemeResources(R.color.signme_yellow, R.color.signme_red, R.color.signme_green);
+		swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+			
+			@Override
+			public void onRefresh() {
+				getLectures();
+			}
+		});
+		
+		/* Initialize recycler view */
+		mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+		
+		adapter = new LectureAdapter(LecturesActivity.this, lectures);
+		mRecyclerView.setAdapter(adapter);
+		
+		adapter.setOnItemClickListener(new eu.signme.app.ui.swipe.OnItemClickListener() {
+			
+			@Override
+			public void onItemClick(View view, int position) {
+				Lecture chosenLecture = (Lecture) adapter.getItem(position);
+				Intent intent = new Intent(LecturesActivity.this,
+						LectureActivity.class);
+				intent.putExtra("id", chosenLecture.getId());
+				intent.putExtra("lectureName", chosenLecture.getName());
+				intent.putExtra("lectureDay",
+						Utils.getRelativeDay(chosenLecture.getDate()));
+				intent.putExtra("lectureHour",
+						chosenLecture.getRoundStartHour());
+				startActivity(intent);
+			}
+		});
+		
+/*
 
 		lwLectures.setOnItemClickListener(new OnItemClickListener() {
 
@@ -135,6 +176,7 @@ public class LecturesActivity extends FragmentActivity implements
 
 			}
 		});
+		*/
 	}
 
 	private void showEditDialog() {
@@ -196,15 +238,17 @@ public class LecturesActivity extends FragmentActivity implements
 				adapter.notifyDataSetChanged();
 				
 				if (lectures.size() > 0)
-					lwLectures.setVisibility(View.VISIBLE);
+					swipeRefreshLayout.setVisibility(View.VISIBLE);
 				else
-					lwLectures.setVisibility(View.INVISIBLE);
-
+					swipeRefreshLayout.setVisibility(View.INVISIBLE);
+				
+				swipeRefreshLayout.setRefreshing(false);
 			}
 
 			@Override
 			public void onError(VolleyError error) {
-				// TODO Auto-generated method stub
+				
+				swipeRefreshLayout.setRefreshing(false);
 
 			}
 

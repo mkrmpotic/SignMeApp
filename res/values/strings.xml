@@ -47,6 +47,8 @@
     <string name="starts_at">%1$s at %2$s o\'clock</string>
     <string name="sign_me">sign me!</string>
     <string name="no_signature_requests">There are no signature requests here at the moment. Ask for one!</string>
+    <string name="signed">signed</string>
+    <string name="undo">undo</string>
     
     <!-- MY PROFILE ACTIVITY -->
     <string name="change_password">change password</string>

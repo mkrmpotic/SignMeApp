@@ -3,15 +3,20 @@ package eu.signme.app;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 
@@ -19,34 +24,46 @@ import eu.signme.app.adapter.SignatureAdapter;
 import eu.signme.app.api.SignMeAPI;
 import eu.signme.app.api.SignMeAPI.GetSignaturesHandler;
 import eu.signme.app.api.SignMeAPI.RequestSignHandler;
+import eu.signme.app.api.SignMeAPI.SignUserHandler;
 import eu.signme.app.api.response.GetSignaturesResponse;
 import eu.signme.app.api.response.RequestSignResponse;
+import eu.signme.app.api.response.SignUserResponse;
 import eu.signme.app.model.Signature;
 import eu.signme.app.ui.ActionBar;
 import eu.signme.app.ui.ActionBar.ActionBarListener;
+import eu.signme.app.ui.swipe.RecyclerViewAdapter;
+import eu.signme.app.ui.swipe.SwipeToDismissTouchListener;
+import eu.signme.app.ui.swipe.SwipeableItemClickListener;
+import eu.signme.app.ui.swipe.OnItemClickListener;
 import eu.signme.app.util.Utils;
 
 public class LectureActivity extends FragmentActivity implements
 		ActionBarListener, OnClickListener {
 
 	private ActionBar actionBar;
-	private ListView lwSignatures;
 	private TextView txtName, txtDay;
 	private Button btnSignMe;
 	private RelativeLayout rlSignMe;
-	private SignatureAdapter adapter;
 	private List<Signature> signatures = new ArrayList<Signature>();
 	private int id, userId;
 	private String lectureName, lectureDay, lectureHour;
+	private SwipeRefreshLayout swipeRefreshLayout;
+
+	private RecyclerView mRecyclerView;
+	private SignatureAdapter adapter;
+	
+	private Context mContext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lecture);
-		
+
 		userId = Utils.getIntFromPrefs("id");
 
 		bindViews();
+		
+		mContext = getApplicationContext();
 
 		actionBar.setActionBarListener(this);
 		actionBar.showBackIcon();
@@ -62,7 +79,7 @@ public class LectureActivity extends FragmentActivity implements
 
 		txtName.setText(lectureName);
 		txtDay.setText(strDayMsg);
-		
+
 	}
 
 	@Override
@@ -78,13 +95,82 @@ public class LectureActivity extends FragmentActivity implements
 		actionBar = (ActionBar) findViewById(R.id.action_bar);
 		txtName = (TextView) findViewById(R.id.txt_name);
 		txtDay = (TextView) findViewById(R.id.txt_day);
-		lwSignatures = (ListView) findViewById(R.id.list);
+		
+		swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_signatures);
+		swipeRefreshLayout.setColorSchemeResources(R.color.signme_yellow, R.color.signme_red, R.color.signme_green);
+		swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+			
+			@Override
+			public void onRefresh() {
+				getSignatures();
+			}
+		});
+
+		/* Initialize recycler view */
+		mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 		rlSignMe = (RelativeLayout) findViewById(R.id.rl_sign_me);
 		btnSignMe = (Button) findViewById(R.id.btn_sign_me);
 
 		btnSignMe.setOnClickListener(this);
-		adapter = new SignatureAdapter(this, signatures, userId);
-		lwSignatures.setAdapter(adapter);
+
+		adapter = new SignatureAdapter(LectureActivity.this, signatures, userId);
+		mRecyclerView.setAdapter(adapter);
+
+		final SwipeToDismissTouchListener<RecyclerViewAdapter> touchListener = new SwipeToDismissTouchListener<>(
+				new RecyclerViewAdapter(mRecyclerView),
+				new SwipeToDismissTouchListener.DismissCallbacks<RecyclerViewAdapter>() {
+					@Override
+					public boolean canDismiss(int position) {
+						Signature currentSignature = signatures.get(position);
+						if (currentSignature.getStatus() == 0 && currentSignature.getIUserd() != userId)
+							return true;
+						else
+							return false;
+					}
+
+					@Override
+					public void onDismiss(RecyclerViewAdapter view, int position) {
+						Signature currentSignature = signatures.get(position);
+						signatures.remove(position);
+						adapter.notifyDataSetChanged();
+						SignMeAPI.signUser(currentSignature.getId(), new SignUserHandler() {
+							
+							@Override
+							public void onSuccess(SignUserResponse response) {			
+								getSignatures();
+							}
+							
+							@Override
+							public void onError(VolleyError error) {
+								// TODO Auto-generated method stub
+								
+							}
+						});
+						
+					}
+				});
+		mRecyclerView.setOnTouchListener(touchListener);
+		// Setting this scroll listener is required to ensure that during
+		// ListView scrolling,
+		// we don't look for swipes.
+		mRecyclerView
+				.setOnScrollListener((RecyclerView.OnScrollListener) touchListener
+						.makeScrollListener());
+		mRecyclerView.addOnItemTouchListener(new SwipeableItemClickListener(
+				this, new OnItemClickListener() {
+					@Override
+					public void onItemClick(View view, int position) {
+						if (view.getId() == R.id.txt_signed) {
+							touchListener.processPendingDismisses();
+						} else { // R.id.txt_data
+							Toast.makeText(LectureActivity.this,
+									"Position " + position, Toast.LENGTH_SHORT)
+									.show();
+						}
+					}
+				}));
 
 	}
 
@@ -118,22 +204,23 @@ public class LectureActivity extends FragmentActivity implements
 				signatures.clear();
 				signatures.addAll(response.getSignatures());
 				adapter.notifyDataSetChanged();
-				
+
 				if (!signatures.contains(new Signature(userId))) {
 					rlSignMe.setVisibility(View.VISIBLE);
 				}
 
 				if (signatures.size() > 0) {
-					lwSignatures.setVisibility(View.VISIBLE);
+					swipeRefreshLayout.setVisibility(View.VISIBLE);
 				} else {
-					lwSignatures.setVisibility(View.INVISIBLE);
+					swipeRefreshLayout.setVisibility(View.INVISIBLE);
 				}
-
+				swipeRefreshLayout.setRefreshing(false);
 			}
 
 			@Override
 			public void onError(VolleyError error) {
-				// TODO Auto-generated method stub
+				
+				swipeRefreshLayout.setRefreshing(false);
 
 			}
 		});
@@ -145,17 +232,17 @@ public class LectureActivity extends FragmentActivity implements
 		switch (v.getId()) {
 		case R.id.btn_sign_me:
 			SignMeAPI.requestSign(id, new RequestSignHandler() {
-				
+
 				@Override
 				public void onSuccess(RequestSignResponse response) {
-					rlSignMe.setVisibility(View.INVISIBLE);
-					getSignatures();	
+					rlSignMe.setVisibility(View.GONE);
+					getSignatures();
 				}
-				
+
 				@Override
 				public void onError(VolleyError error) {
 					// TODO Auto-generated method stub
-					
+
 				}
 			});
 			break;
