@@ -4,12 +4,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,11 +20,10 @@ import eu.signme.app.api.SignMeAPI;
 import eu.signme.app.api.SignMeAPI.LoginHandler;
 import eu.signme.app.api.response.ErrorResponse;
 import eu.signme.app.api.response.LoginResponse;
+import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
 
-public class LoginActivity extends Activity implements OnClickListener {
-	
-	
+public class LoginActivity extends SignMeActivity implements OnClickListener {
 
 	private Button btnLogin, btnRegister;
 	private EditText inputEmail, inputPassword;
@@ -39,7 +36,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
+
 		if (!Utils.getStringFromPrefs("token").equals("none")) {
 			Intent intent = new Intent(LoginActivity.this,
 					LecturesActivity.class);
@@ -67,57 +64,78 @@ public class LoginActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.btn_login:
 
-			startLoadingAnimation();
-
 			final String email = inputEmail.getText().toString();
 			final String password = inputPassword.getText().toString();
 
 			if (Utils.isValidEmail(email))
 				if (password.length() > 0)
-				SignMeAPI.login(email, password, new LoginHandler() {
+					if (NetworkUtil.getConnectivityStatus(this) != 0) {
+						startLoadingAnimation();
+						SignMeAPI.login(email, password, new LoginHandler() {
 
-					@Override
-					public void onSuccess(LoginResponse response) {
-						stopLoadingAnimation();
-						Utils.saveToPrefs("token", response.getToken());
-						Utils.saveToPrefs("name", response.getName());
-						Utils.saveToPrefs("id", response.getId());
-						Utils.saveToPrefs("beers", response.getBeers());
-						Intent intent = new Intent(LoginActivity.this,
-								LecturesActivity.class);
+							@Override
+							public void onSuccess(LoginResponse response) {
+								stopLoadingAnimation();
+								Utils.saveToPrefs("token", response.getToken());
+								Utils.saveToPrefs("name", response.getName());
+								Utils.saveToPrefs("id", response.getId());
+								Utils.saveToPrefs("beer", response.getBeers());
+								Intent intent = new Intent(LoginActivity.this,
+										LecturesActivity.class);
+								startActivity(intent);
+								finish();
+							}
+
+							@Override
+							public void onError(VolleyError error) {
+								stopLoadingAnimation();
+								try {
+									String json = new String(
+											error.networkResponse.data,
+											HttpHeaderParser
+													.parseCharset(error.networkResponse.headers));
+									ErrorResponse errorObject = new Gson()
+											.fromJson(json, ErrorResponse.class);
+
+									int errorStatus = errorObject.getStatus();
+
+									int stringResource = getResources()
+											.getIdentifier(
+													"error_"
+															+ Integer
+																	.toString(errorObject
+																			.getStatus()),
+													"string", getPackageName());
+
+									if (errorStatus == 60) {
+										Intent intent = new Intent(
+												LoginActivity.this,
+												AccountNotActivatedActivity.class);
+										intent.putExtra("email", email);
+										intent.putExtra("password", password);
+										startActivity(intent);
+										finish();
+									} else {
+										txtError.setText(stringResource);
+									}
+
+								} catch (UnsupportedEncodingException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+
+							}
+						});
+					} else {
+						Intent intent = new Intent(this,
+								NoConnectionActivity.class);
 						startActivity(intent);
-						finish();
 					}
-
-					@Override
-					public void onError(VolleyError error) {
-						stopLoadingAnimation();
-						try {
-							String json = new String(
-									error.networkResponse.data,
-									HttpHeaderParser
-											.parseCharset(error.networkResponse.headers));
-							ErrorResponse errorObject = new Gson().fromJson(
-									json, ErrorResponse.class);
-
-							int stringResource = getResources().getIdentifier(
-									"error_"
-											+ Integer.toString(errorObject
-													.getStatus()), "string",
-									getPackageName());
-							txtError.setText(stringResource);
-
-						} catch (UnsupportedEncodingException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-
-					}
-				});
+				else {
+					stopLoadingAnimation();
+					txtError.setText(getString(R.string.no_password));
+				}
 			else {
-				stopLoadingAnimation();
-				txtError.setText(getString(R.string.no_password));
-			} else {
 				stopLoadingAnimation();
 				txtError.setText(getString(R.string.email_invalid));
 			}
@@ -128,7 +146,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 			break;
 		}
 	}
-
 
 	private void setLoadingText(final CharSequence text) {
 		runOnUiThread(new Runnable() {
@@ -149,7 +166,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	}
 
 	public void stopLoadingAnimation() {
-		
+
 		// stop the timer, if it's not already null
 		if (timer != null) {
 			timer.cancel();
@@ -171,6 +188,5 @@ public class LoginActivity extends Activity implements OnClickListener {
 			}
 		};
 	}
-	
 
 }

@@ -52,12 +52,12 @@
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
     </style>
-
-    <!-- White Button Style with yellow bg -->
-    <style name="btnStyleWhiteYellow" parent="@android:style/Widget.Button">
+    
+    <!-- White Button Style with gray bg -->
+    <style name="btnStyleWhiteGray" parent="@android:style/Widget.Button">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@drawable/btn_white_yellow_text_color</item>
+        <item name="android:textColor">@drawable/btn_white_gray_text_color</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/btn_white_background</item>
         <item name="android:padding">8dp</item>
@@ -97,6 +97,27 @@
         <item name="android:background">@drawable/btn_menu_background</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
+    </style>
+
+    <!-- Edit Button Style -->
+    <style name="btnStyleEdit" parent="@android:style/Widget.Button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@drawable/btn_edit_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_edit_background</item>
+        <item name="android:padding">6dp</item>
+        <item name="android:textStyle">bold</item>
+F        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <!-- Colorful Progress Bar -->
+    <style name="ColorfulProgressBar" parent="SmoothProgressBar">
+        <item name="spb_stroke_separator_length">0dp</item>
+        <item name="spb_sections_count">4</item>
+        <item name="spb_speed">1.0</item>
+        <item name="spb_colors">@array/monotone</item>
+        <item name="spb_stroke_width">8dp</item>
     </style>
 
 </resources>

@@ -79,14 +79,13 @@ public class NewLectureDialog extends DialogFragment implements
 			}
 		});
 
-		// getDialog().getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
+		getDialog().getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
 		// Show soft keyboard automatically
 		mEditText.requestFocus();
-		getDialog().getWindow().setSoftInputMode(
-				LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
 
 
 		return view;

@@ -17,6 +17,37 @@
         android:textSize="30sp" />
 
     <RelativeLayout
+        android:id="@+id/rl_beer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/icon_beer"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:contentDescription="@string/menu"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_beer" />
+
+        <TextView
+            android:id="@+id/txt_beer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/icon_beer"
+            android:fontFamily="sans-serif"
+            android:text="@string/plus_one"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/rl_signature"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

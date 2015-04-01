@@ -27,6 +27,8 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
@@ -99,8 +101,8 @@ public class SwipeToDismissTouchListener<SomeCollectionView extends ViewAdapter>
 
         public RowContainer(ViewGroup container) {
             this.container = container;
-            dataContainer = container.getChildAt(1);
-            undoContainer = container.getChildAt(0);
+            dataContainer = container.getChildAt(2);
+            undoContainer = container.getChildAt(1);
             dataContainerHasBeenDismissed = false;
         }
 
@@ -381,8 +383,12 @@ public class SwipeToDismissTouchListener<SomeCollectionView extends ViewAdapter>
     }
 
     private void addPendingDismiss(RowContainer dismissView, int dismissPosition) {
+    	final Animation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+    	fadeIn.setDuration(500);
+        
         dismissView.dataContainerHasBeenDismissed = true;
         dismissView.undoContainer.setVisibility(View.VISIBLE);
+        dismissView.undoContainer.setAnimation(fadeIn);
         mPendingDismiss = new PendingDismissData(dismissPosition, dismissView);
     }
 

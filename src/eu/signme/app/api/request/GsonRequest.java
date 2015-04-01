@@ -34,16 +34,16 @@ public class GsonRequest<T> extends JsonRequest<T> {
 	 * @param headers
 	 *            Map of request headers
 	 */
-	public GsonRequest(int method, String url, JSONObject jsonRequest, Class<T> clazz, Map<String, String> headers,
-			Listener<T> listener, ErrorListener errorListener) {
-		super(method, url, (jsonRequest == null) ? null : jsonRequest.toString(), listener, errorListener);
+	public GsonRequest(int method, String url, JSONObject jsonRequest,
+			Class<T> clazz, Map<String, String> headers, Listener<T> listener,
+			ErrorListener errorListener) {
+		super(method, url, (jsonRequest == null) ? null : jsonRequest
+				.toString(), listener, errorListener);
 		this.clazz = clazz;
 		this.headers = headers;
 		this.listener = listener;
 		this.params = null;
 	}
-
-
 
 	@Override
 	public Map<String, String> getHeaders() throws AuthFailureError {
@@ -64,8 +64,7 @@ public class GsonRequest<T> extends JsonRequest<T> {
 	protected Response<T> parseNetworkResponse(NetworkResponse response) {
 		// if (response.statusCode)
 		try {
-			String json = new String(response.data,
-					HttpHeaderParser.parseCharset(response.headers));
+			String json = new String(response.data, "UTF-8");
 			return Response.success(gson.fromJson(json, clazz),
 					HttpHeaderParser.parseCacheHeaders(response));
 		} catch (UnsupportedEncodingException e) {

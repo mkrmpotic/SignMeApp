@@ -3,7 +3,7 @@
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/dialog_yellow_background"
+    android:background="@drawable/dialog_gray_background"
     android:paddingBottom="25dp"
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_edit_name"
-        android:background="@drawable/edittext_bold_yellow_background"
+        android:background="@drawable/edittext_bold_gray_background"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:inputType="textPersonName|textCapWords"
@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/btn_save"
-        style="@style/btnStyleWhiteYellow"
+        style="@style/btnStyleWhiteGray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/input_name"

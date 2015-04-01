@@ -45,7 +45,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/btn_reload"
+        android:id="@+id/btn_continue"
         style="@style/btnStyleRed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

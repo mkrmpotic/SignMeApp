@@ -20,6 +20,7 @@ import eu.signme.app.api.response.LoginResponse;
 import eu.signme.app.api.response.RegisterGcmResponse;
 import eu.signme.app.api.response.RegistrationResponse;
 import eu.signme.app.api.response.RequestSignResponse;
+import eu.signme.app.api.response.ResendEmailResponse;
 import eu.signme.app.api.response.SignUserResponse;
 import eu.signme.app.util.Utils;
 
@@ -37,6 +38,7 @@ public class SignMeAPI {
 	public static final String CHANGE_PASS = "passchange/";
 	public static final String SIGN = "swipe/";
 	public static final String REQUEST_SIGN = "signrequest/";
+	public static final String RESEND_CONFIRMATION_EMAIL = "resend/";
 
 	private static String getFullUrl(String secondPart) {
 		return BASE_URL + secondPart;
@@ -492,6 +494,52 @@ public class SignMeAPI {
 	 */
 	public interface RequestSignHandler {
 		public void onSuccess(RequestSignResponse response);
+
+		public void onError(VolleyError error);
+	}
+
+	/**
+	 * API method for login.
+	 * 
+	 * @param email
+	 * @param password
+	 * @param handler
+	 * @author Marin
+	 */
+	public static void resendEmail(String email, final ResendEmailHandler handler) {
+
+		JSONObject obj = new JSONObject();
+
+		try {
+			obj.put("email", email);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		sendPost(RESEND_CONFIRMATION_EMAIL, ResendEmailResponse.class, obj,
+				new Listener<ResendEmailResponse>() {
+					@Override
+					public void onResponse(ResendEmailResponse response) {
+						handler.onSuccess(response);
+					}
+				}, new ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						handler.onError(error);
+					}
+
+				});
+	}
+
+	/**
+	 * Login Response Handler
+	 * 
+	 * @author Marin
+	 */
+	public interface ResendEmailHandler {
+		public void onSuccess(ResendEmailResponse response);
 
 		public void onError(VolleyError error);
 	}

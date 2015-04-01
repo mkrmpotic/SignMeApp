@@ -42,6 +42,8 @@
         android:layout_marginTop="60dp"
         android:background="@color/white"
         android:paddingBottom="15dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:paddingTop="15dp" >
 
         <RelativeLayout
@@ -108,8 +110,8 @@
         android:id="@+id/swipe_refresh_signatures"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-         android:layout_below="@id/rl_lecture_header"
-         android:layout_above="@id/rl_sign_me" >
+        android:layout_above="@id/rl_sign_me"
+        android:layout_below="@id/rl_lecture_header" >
 
         <view
             android:id="@+id/recycler_view"
@@ -118,6 +120,16 @@
             class="android.support.v7.widget.RecyclerView"
             android:background="@color/gray_background" />
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/progress_bar"
+        style="@style/ColorfulProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_below="@id/rl_lecture_header"
+        android:indeterminate="true" />
 
     <eu.signme.app.ui.ActionBar
         android:id="@+id/action_bar"

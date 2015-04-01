@@ -33,6 +33,10 @@
     <string name="confirmation_email_already_sent">A confirmation email has already been sent to your address.</string>
     <string name="havent_received_email">If you haven\'t received one yet, tap Resend and we\'ll send you a new one right away.</string>
     <string name="resend_button">resend</string>
+    
+    <!-- ACCOUNT NOT ACTIVATED ACTIVITY -->
+    <string name="account_not_activated">Your account has not yet been activated.</string>
+    <string name="havent_received_confirmation_email">If you haven\'t received a confirmation email, tap Resend and we\'ll send you a new one right away.</string>
 
     <!-- ACCOUNT ACTIVATED ACTIVITY -->
     <string name="account_has_been_activated">Awesome! Your account has now been activated.</string>
@@ -49,9 +53,20 @@
     <string name="no_signature_requests">There are no signature requests here at the moment. Ask for one!</string>
     <string name="signed">signed</string>
     <string name="undo">undo</string>
+    <string name="plus_one">+1</string>
     
     <!-- MY PROFILE ACTIVITY -->
     <string name="change_password">change password</string>
+    <string name="edit_btn">EDIT</string>
+    <string name="name_label">Name:</string>
+    <string name="password_label">Pswrd:</string>
+    <string name="beer_label">Beer:</string>
+    <string name="asterisks">******</string>
+    
+    <!-- NO CONNECTION ACTIVITY -->
+    <string name="no_connection">No Internet Connection.</string>
+    <string name="please_connect">Please connect to the Internet to use SignMe App.</string>
+    <string name="retry_button">retry</string>
 
     <!-- NEW LECTURE DIALOG -->
     <string name="new_lecture">new lecture:</string>
@@ -72,6 +87,13 @@
     <string name="new_password">new password:</string>
     <string name="new_password_again">new password again:</string>
     <string name="submit">submit</string>
+    
+    <!-- TOASTS -->
+    <string name="lecture_created">Lecture successfully created.</string>
+    <string name="name_changed">Name successfully changed.</string>
+    <string name="password_changed">Password successfully changed.</string>
+    <string name="you_asked">You asked for a signature.</string>
+    <string name="minus_one">-1</string>
     
     <!-- HOUR PICKER -->
     <string name="hour_08">8</string>
@@ -101,10 +123,12 @@
     <string name="title_activity_registration">Register</string>
     <string name="title_activity_email_sent">Account Confirmation</string>
     <string name="title_activity_email_already_sent">Account Already Waiting Confirmation</string>
+    <string name="title_activity_account_not_activated">Account Not Activated</string>
     <string name="title_activity_account_activated">Account Activated</string>
     <string name="title_activity_lectures">Lectures</string>
     <string name="title_activity_lecture">Lecture</string>
     <string name="title_activity_my_profile">My Profile</string>
+    <string name="title_activity_no_connection">No Internet Connection</string>
 
     <!-- MENU -->
     <string name="settings">settings</string>

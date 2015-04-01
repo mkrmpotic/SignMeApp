@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,13 +30,16 @@ import eu.signme.app.api.response.SignUserResponse;
 import eu.signme.app.model.Signature;
 import eu.signme.app.ui.ActionBar;
 import eu.signme.app.ui.ActionBar.ActionBarListener;
+import eu.signme.app.ui.SignMeToast;
+import eu.signme.app.ui.swipe.OnItemClickListener;
 import eu.signme.app.ui.swipe.RecyclerViewAdapter;
 import eu.signme.app.ui.swipe.SwipeToDismissTouchListener;
 import eu.signme.app.ui.swipe.SwipeableItemClickListener;
-import eu.signme.app.ui.swipe.OnItemClickListener;
+import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
+import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
-public class LectureActivity extends FragmentActivity implements
+public class LectureActivity extends SignMeActivity implements
 		ActionBarListener, OnClickListener {
 
 	private ActionBar actionBar;
@@ -48,10 +50,11 @@ public class LectureActivity extends FragmentActivity implements
 	private int id, userId;
 	private String lectureName, lectureDay, lectureHour;
 	private SwipeRefreshLayout swipeRefreshLayout;
+	private SmoothProgressBar progressBar;
 
 	private RecyclerView mRecyclerView;
 	private SignatureAdapter adapter;
-	
+
 	private Context mContext;
 
 	@Override
@@ -62,7 +65,7 @@ public class LectureActivity extends FragmentActivity implements
 		userId = Utils.getIntFromPrefs("id");
 
 		bindViews();
-		
+
 		mContext = getApplicationContext();
 
 		actionBar.setActionBarListener(this);
@@ -74,11 +77,8 @@ public class LectureActivity extends FragmentActivity implements
 		lectureDay = intent.getStringExtra("lectureDay");
 		lectureHour = intent.getStringExtra("lectureHour");
 
-		String strDayFormat = getResources().getString(R.string.starts_at);
-		String strDayMsg = String.format(strDayFormat, lectureDay, lectureHour);
-
 		txtName.setText(lectureName);
-		txtDay.setText(strDayMsg);
+		txtDay.setText(getString(R.string.starts_at, lectureDay, lectureHour));
 
 	}
 
@@ -88,18 +88,21 @@ public class LectureActivity extends FragmentActivity implements
 		getSignatures();
 		actionBar.hideMenu();
 		actionBar.setNameAndBeer(Utils.getStringFromPrefs("name"),
-				Utils.getIntFromPrefs("beers"));
+				Utils.getIntFromPrefs("beer"));
 	}
 
 	private void bindViews() {
 		actionBar = (ActionBar) findViewById(R.id.action_bar);
+		progressBar = (SmoothProgressBar) findViewById(R.id.progress_bar);
+
 		txtName = (TextView) findViewById(R.id.txt_name);
 		txtDay = (TextView) findViewById(R.id.txt_day);
-		
+
 		swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_signatures);
-		swipeRefreshLayout.setColorSchemeResources(R.color.signme_yellow, R.color.signme_red, R.color.signme_green);
+		swipeRefreshLayout.setColorSchemeResources(R.color.signme_yellow,
+				R.color.signme_red, R.color.signme_green);
 		swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-			
+
 			@Override
 			public void onRefresh() {
 				getSignatures();
@@ -124,7 +127,8 @@ public class LectureActivity extends FragmentActivity implements
 					@Override
 					public boolean canDismiss(int position) {
 						Signature currentSignature = signatures.get(position);
-						if (currentSignature.getStatus() == 0 && currentSignature.getIUserd() != userId)
+						if (currentSignature.getStatus() == 0
+								&& currentSignature.getIUserd() != userId)
 							return true;
 						else
 							return false;
@@ -135,20 +139,27 @@ public class LectureActivity extends FragmentActivity implements
 						Signature currentSignature = signatures.get(position);
 						signatures.remove(position);
 						adapter.notifyDataSetChanged();
-						SignMeAPI.signUser(currentSignature.getId(), new SignUserHandler() {
-							
-							@Override
-							public void onSuccess(SignUserResponse response) {			
-								getSignatures();
-							}
-							
-							@Override
-							public void onError(VolleyError error) {
-								// TODO Auto-generated method stub
-								
-							}
-						});
-						
+						if (NetworkUtil.getConnectivityStatus(mContext) != 0)
+							SignMeAPI.signUser(currentSignature.getId(),
+									new SignUserHandler() {
+
+										@Override
+										public void onSuccess(
+												SignUserResponse response) {
+											getSignatures();
+											actionBar.setBeer(response
+													.getBeers());
+											Utils.saveToPrefs("beer",
+													response.getBeers());
+										}
+
+										@Override
+										public void onError(VolleyError error) {
+											// TODO Auto-generated method stub
+
+										}
+									});
+
 					}
 				});
 		mRecyclerView.setOnTouchListener(touchListener);
@@ -197,33 +208,35 @@ public class LectureActivity extends FragmentActivity implements
 	}
 
 	private void getSignatures() {
-		SignMeAPI.getSignatures(id, new GetSignaturesHandler() {
+		if (NetworkUtil.getConnectivityStatus(this) != 0)
+			SignMeAPI.getSignatures(id, new GetSignaturesHandler() {
 
-			@Override
-			public void onSuccess(GetSignaturesResponse response) {
-				signatures.clear();
-				signatures.addAll(response.getSignatures());
-				adapter.notifyDataSetChanged();
+				@Override
+				public void onSuccess(GetSignaturesResponse response) {
+					progressBar.setVisibility(View.GONE);
+					signatures.clear();
+					signatures.addAll(response.getSignatures());
+					adapter.notifyDataSetChanged();
 
-				if (!signatures.contains(new Signature(userId))) {
-					rlSignMe.setVisibility(View.VISIBLE);
+					if (!signatures.contains(new Signature(userId))) {
+						rlSignMe.setVisibility(View.VISIBLE);
+					}
+
+					if (signatures.size() > 0) {
+						swipeRefreshLayout.setVisibility(View.VISIBLE);
+					} else {
+						swipeRefreshLayout.setVisibility(View.INVISIBLE);
+					}
+					swipeRefreshLayout.setRefreshing(false);
 				}
 
-				if (signatures.size() > 0) {
-					swipeRefreshLayout.setVisibility(View.VISIBLE);
-				} else {
-					swipeRefreshLayout.setVisibility(View.INVISIBLE);
+				@Override
+				public void onError(VolleyError error) {
+
+					swipeRefreshLayout.setRefreshing(false);
+
 				}
-				swipeRefreshLayout.setRefreshing(false);
-			}
-
-			@Override
-			public void onError(VolleyError error) {
-				
-				swipeRefreshLayout.setRefreshing(false);
-
-			}
-		});
+			});
 
 	}
 
@@ -231,20 +244,25 @@ public class LectureActivity extends FragmentActivity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_sign_me:
-			SignMeAPI.requestSign(id, new RequestSignHandler() {
+			if (NetworkUtil.getConnectivityStatus(this) != 0)
+				SignMeAPI.requestSign(id, new RequestSignHandler() {
 
-				@Override
-				public void onSuccess(RequestSignResponse response) {
-					rlSignMe.setVisibility(View.GONE);
-					getSignatures();
-				}
+					@Override
+					public void onSuccess(RequestSignResponse response) {
+						rlSignMe.setVisibility(View.GONE);
+						getSignatures();
+						SignMeToast toast = new SignMeToast(
+								LectureActivity.this, getResources().getString(
+										R.string.you_asked), Toast.LENGTH_LONG);
+						toast.show();
+					}
 
-				@Override
-				public void onError(VolleyError error) {
-					// TODO Auto-generated method stub
+					@Override
+					public void onError(VolleyError error) {
+						// TODO Auto-generated method stub
 
-				}
-			});
+					}
+				});
 			break;
 		}
 

@@ -46,14 +46,13 @@ public class ChangePasswordDialog extends DialogFragment implements
 		btnSubmit = (Button) view.findViewById(R.id.btn_submit);
 		btnSubmit.setOnClickListener(this);
 
-		// getDialog().getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
+		getDialog().getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
 		// Show soft keyboard automatically
 		inputCurrentPass.requestFocus();
-		getDialog().getWindow().setSoftInputMode(
-				LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
 
 		return view;
 	}

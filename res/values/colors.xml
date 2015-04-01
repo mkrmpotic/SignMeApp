@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <integer-array name="monotone">
+        <item>@color/gray_background</item>
+        <item>@color/light_gray_background</item>
+        <item>@color/white</item>
+    </integer-array>
+
     <color name="gray_background">#ecf0f1</color>
     <color name="light_gray_background">#f0f5f6</color>
     <color name="signme_green">#2ecc71</color>

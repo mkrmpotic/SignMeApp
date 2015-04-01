@@ -40,14 +40,13 @@ public class EditNameDialog extends DialogFragment implements
 		
 		inputName.setText(name);
 
-		// getDialog().getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
+		getDialog().getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
 		// Show soft keyboard automatically
 		inputName.requestFocus();
-		getDialog().getWindow().setSoftInputMode(
-				LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
 
 
 		return view;

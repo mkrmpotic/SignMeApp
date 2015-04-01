@@ -110,6 +110,10 @@ public class ActionBar extends RelativeLayout implements OnClickListener {
 	public void setName(String name) {
 		txtName.setText(name);
 	}
+	
+	public void setBeer(int beer) {
+		txtBeerCount.setText(Integer.toString(beer));
+	}
 
 	public void showPlusIcon() {
 		imgIconLeft.setOnClickListener(this);

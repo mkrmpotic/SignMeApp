@@ -3,19 +3,13 @@ package eu.signme.app;
 import java.io.UnsupportedEncodingException;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
@@ -33,17 +27,17 @@ import eu.signme.app.dialog.EditNameDialog;
 import eu.signme.app.dialog.EditNameDialog.EditNameDialogListener;
 import eu.signme.app.ui.ActionBar;
 import eu.signme.app.ui.ActionBar.ActionBarListener;
+import eu.signme.app.ui.SuccessToast;
+import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
 
-public class MyProfileActivity extends FragmentActivity implements
+public class MyProfileActivity extends SignMeActivity implements
 		ActionBarListener, OnClickListener, EditNameDialogListener,
 		ChangePasswordListener {
 
 	private ActionBar actionBar;
-	private ImageView imgSignature;
-	private TextView txtName, txtBeers;
-	private ImageButton btnEditName;
-	private Button btnChangePass;
+	private TextView txtName, txtBeer;
+	private Button btnChangePass, btnEditName;
 	private EditNameDialog editNameDialog;
 	private ChangePasswordDialog changePassDialog;
 
@@ -59,15 +53,8 @@ public class MyProfileActivity extends FragmentActivity implements
 		actionBar.setActionBarListener(this);
 		actionBar.showBackIcon();
 
-		Bitmap bm = BitmapFactory.decodeResource(getResources(),
-				R.drawable.ic_back);
-		RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(
-				getResources(), bm);
-		img.setCornerRadius(80.0f);
-
-		imgSignature.setImageDrawable(img);
 		txtName.setText(name);
-		txtBeers.setText(Integer.toString(Utils.getIntFromPrefs("beers")));
+		txtBeer.setText(Integer.toString(Utils.getIntFromPrefs("beer")));
 
 	}
 
@@ -76,15 +63,14 @@ public class MyProfileActivity extends FragmentActivity implements
 		super.onResume();
 		actionBar.hideMenu();
 		actionBar.setNameAndBeer(Utils.getStringFromPrefs("name"),
-				Utils.getIntFromPrefs("beers"));
+				Utils.getIntFromPrefs("beer"));
 	}
 
 	private void bindViews() {
 		actionBar = (ActionBar) findViewById(R.id.action_bar);
-		imgSignature = (ImageView) findViewById(R.id.img_signature);
 		txtName = (TextView) findViewById(R.id.txt_name);
-		btnEditName = (ImageButton) findViewById(R.id.btn_edit_name);
-		txtBeers = (TextView) findViewById(R.id.txt_beers);
+		btnEditName = (Button) findViewById(R.id.btn_edit_name);
+		txtBeer = (TextView) findViewById(R.id.txt_beers);
 		btnChangePass = (Button) findViewById(R.id.btn_change_password);
 
 		btnEditName.setOnClickListener(this);
@@ -142,66 +128,78 @@ public class MyProfileActivity extends FragmentActivity implements
 
 	@Override
 	public void onFinishEditName(String name) {
+		if (NetworkUtil.getConnectivityStatus(this) != 0)
+			SignMeAPI.changeName(name, new ChangeNameHandler() {
 
-		SignMeAPI.changeName(name, new ChangeNameHandler() {
+				@Override
+				public void onSuccess(ChangeNameResponse response) {
+					// TODO Auto-generated method stub
+					String name = response.getName();
+					Utils.saveToPrefs("name", name);
+					txtName.setText(name);
+					actionBar.setName(name);
+					editNameDialog.dismiss();
+					SuccessToast toast = new SuccessToast(
+							MyProfileActivity.this, getResources().getString(
+									R.string.name_changed), Toast.LENGTH_LONG);
+					toast.show();
+				}
 
-			@Override
-			public void onSuccess(ChangeNameResponse response) {
-				// TODO Auto-generated method stub
-				String name = response.getName();
-				Utils.saveToPrefs("name", name);
-				txtName.setText(name);
-				actionBar.setName(name);
-				editNameDialog.dismiss();
-			}
+				@Override
+				public void onError(VolleyError error) {
+					// TODO Auto-generated method stub
 
-			@Override
-			public void onError(VolleyError error) {
-				// TODO Auto-generated method stub
-
-			}
-		});
+				}
+			});
 
 	}
 
 	@Override
 	public void onFinishChangePasswordDialog(String currentPassword,
 			String newPassword) {
-		SignMeAPI.changePassword(currentPassword, newPassword,
-				new ChangePasswordHandler() {
+		if (NetworkUtil.getConnectivityStatus(this) != 0)
+			SignMeAPI.changePassword(currentPassword, newPassword,
+					new ChangePasswordHandler() {
 
-					@Override
-					public void onSuccess(ChangePasswordResponse response) {
-						changePassDialog.dismiss();
-
-					}
-
-					@Override
-					public void onError(VolleyError error) {
-
-						try {
-							String json = new String(
-									error.networkResponse.data,
-									HttpHeaderParser
-											.parseCharset(error.networkResponse.headers));
-							ErrorResponse errorObject = new Gson().fromJson(
-									json, ErrorResponse.class);
-
-							int stringResource = getResources().getIdentifier(
-									"error_"
-											+ Integer.toString(errorObject
-													.getStatus()), "string",
-									getPackageName());
-							changePassDialog
-									.setChangePasswordError(stringResource);
-
-						} catch (UnsupportedEncodingException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+						@Override
+						public void onSuccess(ChangePasswordResponse response) {
+							changePassDialog.dismiss();
+							SuccessToast toast = new SuccessToast(
+									MyProfileActivity.this, getResources()
+											.getString(
+													R.string.password_changed),
+									Toast.LENGTH_LONG);
+							toast.show();
 						}
 
-					}
-				});
+						@Override
+						public void onError(VolleyError error) {
+
+							try {
+								String json = new String(
+										error.networkResponse.data,
+										HttpHeaderParser
+												.parseCharset(error.networkResponse.headers));
+								ErrorResponse errorObject = new Gson()
+										.fromJson(json, ErrorResponse.class);
+
+								int stringResource = getResources()
+										.getIdentifier(
+												"error_"
+														+ Integer
+																.toString(errorObject
+																		.getStatus()),
+												"string", getPackageName());
+								changePassDialog
+										.setChangePasswordError(stringResource);
+
+							} catch (UnsupportedEncodingException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
+						}
+					});
 
 	}
 }
