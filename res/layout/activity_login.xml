@@ -11,21 +11,20 @@
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/img_logo"
         android:src="@drawable/logo" />
-    
+
     <TextView
-            android:id="@+id/txt_error"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/signme_red"
-            android:layout_below="@id/img_logo"
-            android:gravity="center"
-            android:textSize="18sp" />
+        android:id="@+id/txt_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_logo"
+        android:gravity="center"
+        android:textColor="@color/signme_red"
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:id="@+id/rl_email_container"
@@ -39,7 +38,6 @@
             android:id="@+id/txt_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-thin"
             android:text="@string/email"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -49,9 +47,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/txt_email"
+            android:layout_toEndOf="@id/txt_email"
             android:layout_toRightOf="@id/txt_email"
             android:background="@drawable/edittext_background"
-            android:fontFamily="sans-serif-light"
             android:inputType="textEmailAddress"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
@@ -71,7 +69,6 @@
             android:id="@+id/txt_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-thin"
             android:text="@string/password"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -81,9 +78,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/txt_password"
+            android:layout_toEndOf="@id/txt_password"
             android:layout_toRightOf="@id/txt_password"
             android:background="@drawable/edittext_background"
-            android:fontFamily="sans-serif-light"
             android:inputType="textPassword"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
@@ -112,7 +109,6 @@
             android:id="@+id/txt_no_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
             android:text="@string/no_account"
             android:textColor="@color/black"
             android:textSize="14sp" />
@@ -123,6 +119,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@id/txt_no_account"
             android:layout_toRightOf="@id/txt_no_account"
             android:text="@string/register_button" />
     </RelativeLayout>

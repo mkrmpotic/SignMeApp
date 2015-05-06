@@ -60,8 +60,12 @@
     <string name="edit_btn">EDIT</string>
     <string name="name_label">Name:</string>
     <string name="password_label">Pswrd:</string>
-    <string name="beer_label">Beer:</string>
+    <string name="beer_label">Beers:</string>
     <string name="asterisks">******</string>
+    
+    <!-- TOP COMRADES ACTIVITY -->
+    <string name="top_comrades">top comrades</string>
+    <string name="earned_beers">earned %1$d beers</string>
     
     <!-- NO CONNECTION ACTIVITY -->
     <string name="no_connection">No Internet Connection.</string>
@@ -93,7 +97,12 @@
     <string name="name_changed">Name successfully changed.</string>
     <string name="password_changed">Password successfully changed.</string>
     <string name="you_asked">You asked for a signature.</string>
+    <string name="not_enough_beer">You don\'t have any beers left.</string>
     <string name="minus_one">-1</string>
+    
+    <!-- PUSH NOTIFS -->
+    <string name="you_have_been_signed">You\'ve been signed!</string>
+    <string name="say_thanks">Say thanks to %1$s.</string>
     
     <!-- HOUR PICKER -->
     <string name="hour_08">8</string>
@@ -129,7 +138,8 @@
     <string name="title_activity_lecture">Lecture</string>
     <string name="title_activity_my_profile">My Profile</string>
     <string name="title_activity_no_connection">No Internet Connection</string>
-
+	<string name="title_activity_top_comrades">Top Comrades</string>
+    
     <!-- MENU -->
     <string name="settings">settings</string>
     <string name="logout">log out</string>

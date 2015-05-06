@@ -1,11 +1,15 @@
 package eu.signme.app.util;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Utils {
@@ -90,6 +94,7 @@ public class Utils {
 
 		editor.clear();
 		editor.commit();
+		
 	}
 
 	/**
@@ -128,6 +133,18 @@ public class Utils {
 			return "tomorrow";
 		} else {
 			return "unknown";
+		}
+	}
+
+	public static String getDate(boolean today) {
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd",
+				Locale.US);
+		Calendar cal = Calendar.getInstance(); // today
+		if (today) {
+			return timeFormat.format(cal.getTime());
+		} else {
+			cal.add(Calendar.DAY_OF_YEAR, +1); // tommorow
+			return timeFormat.format(cal.getTime());
 		}
 	}
 }

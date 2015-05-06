@@ -50,9 +50,7 @@ public class ChangePasswordDialog extends DialogFragment implements
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
-		// Show soft keyboard automatically
 		inputCurrentPass.requestFocus();
-
 
 		return view;
 	}

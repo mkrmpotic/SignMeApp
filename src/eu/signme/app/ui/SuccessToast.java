@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import eu.signme.app.R;
+import eu.signme.app.util.Fonts;
 
 public class SuccessToast extends Toast {
 
@@ -21,6 +22,10 @@ public class SuccessToast extends Toast {
 		this.setView(customToastRoot);
 		this.setGravity(Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 0, 0);
 
+		TextView txtMessage = (TextView) customToastRoot
+				.findViewById(R.id.txt_message);
+		txtMessage.setTypeface(Fonts.getTypeface(context, Fonts.ROBOTO_LIGHT));
+
 	}
 
 	public SuccessToast(Context context, String message, int duration) {
@@ -34,6 +39,8 @@ public class SuccessToast extends Toast {
 		this.setView(customToastRoot);
 		this.setGravity(Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 0, 0);
 		this.setDuration(duration);
+
+		text.setTypeface(Fonts.getTypeface(context, Fonts.ROBOTO_LIGHT));
 	}
 
 }

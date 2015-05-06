@@ -37,15 +37,13 @@
             android:layout_below="@id/img_paper_plane"
             android:text="@string/account_not_activated"
             android:textColor="@color/dark_gray_text"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txt_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_title"
-            android:fontFamily="sans-serif-light"
             android:text="@string/havent_received_confirmation_email"
             android:textColor="@color/black"
             android:textSize="20sp" />

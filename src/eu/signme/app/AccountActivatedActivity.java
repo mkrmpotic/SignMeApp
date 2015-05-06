@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
+import eu.signme.app.util.Fonts;
 
 public class AccountActivatedActivity extends SignMeActivity implements
 		OnClickListener {
@@ -21,7 +23,13 @@ public class AccountActivatedActivity extends SignMeActivity implements
 
 	private void bindViews() {
 		btnContinue = (Button) findViewById(R.id.btn_continue);
-		
+
+		TextView txtTitle = (TextView) findViewById(R.id.txt_title);
+		TextView txtSubtitle = (TextView) findViewById(R.id.txt_subtitle);
+
+		txtTitle.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_BOLD));
+		txtSubtitle.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+
 		btnContinue.setOnClickListener(this);
 	}
 

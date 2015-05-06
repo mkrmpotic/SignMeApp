@@ -92,9 +92,9 @@
     <!-- Hour Picker Button Style -->
     <style name="btnStyleHourPicker" parent="@android:style/Widget.Button">
         <item name="android:textSize">24sp</item>
-        <item name="android:textColor">@drawable/btn_menu_text_color</item>
+        <item name="android:textColor">@drawable/btn_daypicker_text_color</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/btn_menu_background</item>
+        <item name="android:background">@drawable/btn_daypicker_background</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
     </style>

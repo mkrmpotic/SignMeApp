@@ -20,6 +20,7 @@ import eu.signme.app.api.SignMeAPI;
 import eu.signme.app.api.SignMeAPI.LoginHandler;
 import eu.signme.app.api.response.ErrorResponse;
 import eu.signme.app.api.response.LoginResponse;
+import eu.signme.app.util.Fonts;
 import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
 
@@ -54,6 +55,17 @@ public class LoginActivity extends SignMeActivity implements OnClickListener {
 		inputEmail = (EditText) findViewById(R.id.input_email);
 		inputPassword = (EditText) findViewById(R.id.input_password);
 		txtError = (TextView) findViewById(R.id.txt_error);
+
+		TextView txtEmail = (TextView) findViewById(R.id.txt_email);
+		TextView txtPassword = (TextView) findViewById(R.id.txt_password);
+		TextView txtNoAccount = (TextView) findViewById(R.id.txt_no_account);
+
+		txtError.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtEmail.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_THIN));
+		inputEmail.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtPassword.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_THIN));
+		inputPassword.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtNoAccount.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
 
 		btnLogin.setOnClickListener(this);
 		btnRegister.setOnClickListener(this);

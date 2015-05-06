@@ -6,11 +6,12 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import eu.signme.app.R;
 import eu.signme.app.model.Lecture;
 import eu.signme.app.ui.swipe.OnItemClickListener;
+import eu.signme.app.util.Fonts;
 import eu.signme.app.util.Utils;
 import eu.signme.app.viewholder.LecturesRowHolder;
 
@@ -46,19 +47,24 @@ public class LectureAdapter extends RecyclerView.Adapter<LecturesRowHolder> {
 			feedListRowHolder.view
 					.setBackgroundResource(R.drawable.listrow_light_background);
 		}
+		
+		
+		TextView txtName = feedListRowHolder.txtName;
+		TextView txtDay = feedListRowHolder.txtDay;
+		TextView txtCount = feedListRowHolder.txtCount;
+		txtName.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_MEDIUM));
+		txtDay.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_LIGHT));
+		txtCount.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_THIN));
+		
 
-		// Getting lecture data from a row
+
 		Lecture lecture = lectures.get(i);
+		
+		txtName.setText(lecture.getName());
 
-		// Name of a lecture
-		feedListRowHolder.txtName.setText(lecture.getName());
+		txtDay.setText(Utils.getRelativeDay(lecture.getDate()));
 
-		// Day of a lecture
-		feedListRowHolder.txtDay
-				.setText(Utils.getRelativeDay(lecture.getDate()));
-
-		// Number of requested signatures
-		feedListRowHolder.txtCount.setText(Integer.toString(lecture
+		txtCount.setText(Integer.toString(lecture
 				.getSignCount()));
 
 	}

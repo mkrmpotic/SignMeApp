@@ -14,11 +14,10 @@ public abstract class SignMeActivity extends FragmentActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if(NetworkUtil.getConnectivityStatus(this) == 0) {
-			Intent intent = new Intent(this,
-					NoConnectionActivity.class);
+		if (NetworkUtil.getConnectivityStatus(this) == 0) {
+			Intent intent = new Intent(this, NoConnectionActivity.class);
 			startActivity(intent);
 		}
 	}
-	
+
 }

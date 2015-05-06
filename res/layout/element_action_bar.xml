@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="242dp" >
+    android:layout_height="302dp" >
 
     <RelativeLayout
         android:id="@+id/rl_action_bar"
@@ -13,12 +13,13 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:adjustViewBounds="true"
+            android:background="@drawable/btn_actionbar_left_background"
             android:contentDescription="@string/add"
             android:scaleType="centerInside"
             android:src="@drawable/ic_plus"
-            android:visibility="invisible"
-            android:background="@drawable/btn_actionbar_left_background" />
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/logo"
@@ -35,6 +36,7 @@
             android:id="@+id/icon_menu"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:adjustViewBounds="true"
             android:contentDescription="@string/menu"
@@ -44,67 +46,73 @@
 
     <RelativeLayout
         android:id="@+id/rl_menu"
-        android:layout_width="match_parent"
-        android:layout_height="182dp"
+        android:layout_width="200dp"
+        android:layout_height="242dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="60dp"
-        android:background="@drawable/menu_background"
+        android:background="@color/dark_gray_text"
         android:visibility="invisible" >
 
         <RelativeLayout
-            android:id="@+id/rl_name"
-            android:layout_width="match_parent"
-            android:layout_height="60dp" >
-
-            <TextView
-                android:id="@+id/txt_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/txt_beer_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+            android:id="@+id/rl_beers"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" >
 
             <ImageView
                 android:id="@+id/icon_beer"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_toLeftOf="@id/txt_beer_count"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/menu"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_beer" />
+
+            <TextView
+                android:id="@+id/txt_beer_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/icon_beer"
+                android:layout_toRightOf="@id/icon_beer"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_top_comrades"
+            style="@style/btnStyleMenu"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/rl_beers"
+            android:text="@string/top_comrades" />
 
         <Button
             android:id="@+id/btn_settings"
             style="@style/btnStyleMenu"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="60dp"
-            android:layout_below="@id/rl_name"
-            android:fontFamily="sans-serif-light"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/btn_top_comrades"
             android:text="@string/settings" />
 
         <Button
             android:id="@+id/btn_logout"
             style="@style/btnStyleMenu"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@id/btn_settings"
-            android:fontFamily="sans-serif-light"
             android:text="@string/logout" />
     </RelativeLayout>
 

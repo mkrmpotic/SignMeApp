@@ -17,8 +17,7 @@ public class SplashActivity extends SignMeActivity {
 			startActivity(intent);
 			finish();
 		} else {
-			Intent intent = new Intent(SplashActivity.this,
-					LoginActivity.class);
+			Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
 			startActivity(intent);
 			finish();
 		}

@@ -13,13 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import eu.signme.app.R;
 
-public class EditNameDialog extends DialogFragment implements
-		OnClickListener {
+public class EditNameDialog extends DialogFragment implements OnClickListener {
 
 	public interface EditNameDialogListener {
 		void onFinishEditName(String name);
 	}
-	
+
 	EditNameDialogListener editNameListener = null;
 
 	private EditText inputName;
@@ -37,21 +36,19 @@ public class EditNameDialog extends DialogFragment implements
 		inputName = (EditText) view.findViewById(R.id.input_name);
 		btnSave = (Button) view.findViewById(R.id.btn_save);
 		btnSave.setOnClickListener(this);
-		
+
 		inputName.setText(name);
 
 		getDialog().getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
-		// Show soft keyboard automatically
+
 		inputName.requestFocus();
-
-
 
 		return view;
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -60,12 +57,9 @@ public class EditNameDialog extends DialogFragment implements
 			break;
 		}
 	}
-	
+
 	public void setEditNameDialogListener(EditNameDialogListener listener) {
 		editNameListener = listener;
 	}
-
-
-
 
 }

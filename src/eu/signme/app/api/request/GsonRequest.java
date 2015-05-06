@@ -62,7 +62,7 @@ public class GsonRequest<T> extends JsonRequest<T> {
 
 	@Override
 	protected Response<T> parseNetworkResponse(NetworkResponse response) {
-		// if (response.statusCode)
+
 		try {
 			String json = new String(response.data, "UTF-8");
 			return Response.success(gson.fromJson(json, clazz),

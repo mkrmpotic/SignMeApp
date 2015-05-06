@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -36,6 +37,7 @@ import eu.signme.app.model.Lecture;
 import eu.signme.app.ui.ActionBar;
 import eu.signme.app.ui.ActionBar.ActionBarListener;
 import eu.signme.app.ui.SuccessToast;
+import eu.signme.app.util.Fonts;
 import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
@@ -49,7 +51,7 @@ public class LecturesActivity extends SignMeActivity implements
 
 	private ActionBar actionBar;
 	private List<Lecture> lectures = new ArrayList<Lecture>();
-	private NewLectureDialog editNameDialog;
+	private NewLectureDialog newLectureDialog;
 	private SmoothProgressBar progressBar;
 	private Button btnNewLecture;
 
@@ -79,8 +81,7 @@ public class LecturesActivity extends SignMeActivity implements
 		super.onResume();
 		getLectures();
 		actionBar.hideMenu();
-		actionBar.setNameAndBeer(Utils.getStringFromPrefs("name"),
-				Utils.getIntFromPrefs("beer"));
+		actionBar.setBeer(Utils.getIntFromPrefs("beer"));
 	}
 
 	public void getRegId() {
@@ -112,13 +113,13 @@ public class LecturesActivity extends SignMeActivity implements
 						@Override
 						public void onSuccess(RegisterGcmResponse response) {
 							// TODO Auto-generated method stub
-							Log.i("MAROO", response.getDetail());
+
 						}
 
 						@Override
 						public void onError(VolleyError error) {
 							// TODO Auto-generated method stub
-							Log.i("MAROO2", error.toString());
+
 						}
 					});
 			}
@@ -130,6 +131,10 @@ public class LecturesActivity extends SignMeActivity implements
 		progressBar = (SmoothProgressBar) findViewById(R.id.progress_bar);
 
 		btnNewLecture = (Button) findViewById(R.id.btn_create_lecture);
+
+		TextView txtNoLectures = (TextView) findViewById(R.id.txt_no_lectures);
+
+		txtNoLectures.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_BOLD));
 
 		swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_lectures);
 		swipeRefreshLayout.setColorSchemeResources(R.color.signme_yellow,
@@ -167,44 +172,26 @@ public class LecturesActivity extends SignMeActivity implements
 			}
 		});
 
-		/*
-		 * 
-		 * lwLectures.setOnItemClickListener(new OnItemClickListener() {
-		 * 
-		 * @Override public void onItemClick(AdapterView<?> parent, View view,
-		 * int position, long id) {
-		 * 
-		 * Lecture chosenLecture = (Lecture) adapter.getItem(position); Intent
-		 * intent = new Intent(LecturesActivity.this, LectureActivity.class);
-		 * intent.putExtra("id", chosenLecture.getId());
-		 * intent.putExtra("lectureName", chosenLecture.getName());
-		 * intent.putExtra("lectureDay",
-		 * Utils.getRelativeDay(chosenLecture.getDate()));
-		 * intent.putExtra("lectureHour", chosenLecture.getRoundStartHour());
-		 * startActivity(intent);
-		 * 
-		 * } });
-		 */
 	}
 
 	private void showEditDialog() {
 		FragmentManager fm = getSupportFragmentManager();
-		editNameDialog = new NewLectureDialog();
-		editNameDialog.show(fm, "dialog_new_lecture");
-		editNameDialog.setNewLectureDialogListener(this);
+		newLectureDialog = new NewLectureDialog();
+		newLectureDialog.show(fm, "dialog_new_lecture");
+		newLectureDialog.setNewLectureDialogListener(this);
 	}
 
 	@Override
 	public void onFinishCreateLecture(String name, String start, String end,
-			boolean today) {
+			String day) {
 		if (NetworkUtil.getConnectivityStatus(this) != 0)
-			SignMeAPI.createLecture(name, start, end, today,
+			SignMeAPI.createLecture(name, start, end, day,
 					new CreateLectureHandler() {
 
 						@Override
 						public void onSuccess(CreateLectureResponse response) {
 							// TODO Auto-generated method stub
-							editNameDialog.dismiss();
+							newLectureDialog.dismiss();
 							SuccessToast toast = new SuccessToast(
 									LecturesActivity.this,
 									getResources().getString(
@@ -224,12 +211,17 @@ public class LecturesActivity extends SignMeActivity implements
 
 	@Override
 	public void onMenuItemClicked(int itemId) {
+		Intent intent;
 		switch (itemId) {
 		case ActionBar.ICON_LEFT:
 			showEditDialog();
 			break;
+		case ActionBar.TOP_COMRADES:
+			intent = new Intent(this, TopComradesActivity.class);
+			startActivity(intent);
+			break;
 		case ActionBar.SETTINGS:
-			Intent intent = new Intent(this, MyProfileActivity.class);
+			intent = new Intent(this, MyProfileActivity.class);
 			startActivity(intent);
 			break;
 		case ActionBar.LOGOUT:

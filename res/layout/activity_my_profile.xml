@@ -17,8 +17,8 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:fontFamily="sans-serif-light"
             android:text="@string/name_label"
             android:textColor="@color/dark_gray_text"
             android:textSize="22sp" />
@@ -28,8 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/txt_label_name"
             android:layout_toRightOf="@id/txt_label_name"
-            android:fontFamily="sans-serif-light"
             android:textColor="@color/dark_gray_text"
             android:textSize="22sp" />
 
@@ -38,6 +38,7 @@
             style="@style/btnStyleEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="@string/edit_btn" />
@@ -63,8 +64,8 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:fontFamily="sans-serif-light"
             android:text="@string/password_label"
             android:textColor="@color/dark_gray_text"
             android:textSize="22sp" />
@@ -74,8 +75,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/txt_label_password"
             android:layout_toRightOf="@id/txt_label_password"
-            android:fontFamily="sans-serif-light"
             android:text="@string/asterisks"
             android:textColor="@color/dark_gray_text"
             android:textSize="22sp" />
@@ -85,6 +86,7 @@
             style="@style/btnStyleEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="@string/edit_btn" />
@@ -110,8 +112,8 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:fontFamily="sans-serif-light"
             android:text="@string/beer_label"
             android:textColor="@color/dark_gray_text"
             android:textSize="22sp" />
@@ -121,8 +123,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/txt_label_beer"
             android:layout_toRightOf="@id/txt_label_beer"
-            android:fontFamily="sans-serif-light"
             android:textColor="@color/dark_gray_text"
             android:textSize="22sp" />
     </RelativeLayout>
@@ -137,6 +139,6 @@
     <eu.signme.app.ui.ActionBar
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
-        android:layout_height="242dp" />
+        android:layout_height="302dp" />
 
 </RelativeLayout>

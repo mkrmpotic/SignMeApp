@@ -11,8 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:fontFamily="sans-serif"
-        android:textStyle="bold"
         android:text="@string/minus_one"
         android:textColor="@color/signme_yellow"
         android:textSize="24sp" />
@@ -22,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         android:src="@drawable/ic_beer_yellow" />
 
     <TextView
@@ -29,7 +28,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:fontFamily="sans-serif-light"
         android:textColor="@color/dark_gray_text"
         android:textSize="20sp" />
 

@@ -20,6 +20,7 @@ import eu.signme.app.api.SignMeAPI;
 import eu.signme.app.api.SignMeAPI.RegistrationHandler;
 import eu.signme.app.api.response.ErrorResponse;
 import eu.signme.app.api.response.RegistrationResponse;
+import eu.signme.app.util.Fonts;
 import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
 
@@ -49,6 +50,23 @@ public class RegistrationActivity extends SignMeActivity implements
 		inputPasswordAgain = (EditText) findViewById(R.id.input_password_again);
 		txtError = (TextView) findViewById(R.id.txt_error);
 
+		TextView txtName = (TextView) findViewById(R.id.txt_name);
+		TextView txtEmail = (TextView) findViewById(R.id.txt_email);
+		TextView txtPassword = (TextView) findViewById(R.id.txt_password);
+		TextView txtPasswordAgain = (TextView) findViewById(R.id.txt_password_again);
+
+		txtError.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtName.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_THIN));
+		inputName.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtEmail.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_THIN));
+		inputEmail.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtPassword.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_THIN));
+		inputPassword.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtPasswordAgain
+				.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_THIN));
+		inputPasswordAgain.setTypeface(Fonts.getTypeface(this,
+				Fonts.ROBOTO_LIGHT));
+
 		btnRegister.setOnClickListener(this);
 	}
 
@@ -63,6 +81,7 @@ public class RegistrationActivity extends SignMeActivity implements
 			final String passwordAgain = inputPasswordAgain.getText()
 					.toString();
 
+			// TODO rewrite this, awful
 			if (name.length() > 0 && email.length() > 0
 					&& password.length() > 0 && passwordAgain.length() > 0)
 				if (Utils.isValidEmail(email))
@@ -81,6 +100,9 @@ public class RegistrationActivity extends SignMeActivity implements
 												Intent intent = new Intent(
 														RegistrationActivity.this,
 														EmailSentActivity.class);
+												intent.putExtra("email", email);
+												intent.putExtra("password",
+														password);
 												startActivity(intent);
 												finish();
 											}

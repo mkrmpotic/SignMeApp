@@ -83,7 +83,8 @@ public class HourPicker extends LinearLayout implements OnClickListener {
 						context.getPackageName());
 
 				currentButton = (Button) view.findViewById(stringResource);
-				currentButton.setBackgroundResource(R.drawable.btn_menu_background);
+				currentButton
+						.setBackgroundResource(R.drawable.btn_daypicker_background);
 				currentButton.setClickable(true);
 			}
 		} else {
@@ -92,7 +93,8 @@ public class HourPicker extends LinearLayout implements OnClickListener {
 						context.getPackageName());
 
 				currentButton = (Button) view.findViewById(stringResource);
-				currentButton.setBackgroundResource(R.drawable.btn_unselectable_background);
+				currentButton
+						.setBackgroundResource(R.drawable.btn_unselectable_background);
 				currentButton.setClickable(false);
 			}
 		}
@@ -118,14 +120,14 @@ public class HourPicker extends LinearLayout implements OnClickListener {
 	public void removeLastElement() {
 		view.findViewById(R.id.btn_21).setVisibility(View.GONE);
 	}
-	
+
 	public void focusOnSecondElement() {
 		selected.setSelected(false);
 		selected = (Button) view.findViewById(R.id.btn_9);
 		selectedButton = (Button) selected;
 		selected.setSelected(true);
 	}
-	
+
 	public String getHour() {
 		return selectedButton.getText().toString();
 	}

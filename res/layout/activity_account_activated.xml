@@ -30,15 +30,13 @@
             android:layout_below="@id/img_paper_plane"
             android:text="@string/account_has_been_activated"
             android:textColor="@color/signme_green"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txt_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_title"
-            android:fontFamily="sans-serif-light"
             android:text="@string/you_may_start"
             android:textColor="@color/black"
             android:textSize="20sp" />

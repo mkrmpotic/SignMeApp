@@ -28,6 +28,7 @@ import eu.signme.app.dialog.EditNameDialog.EditNameDialogListener;
 import eu.signme.app.ui.ActionBar;
 import eu.signme.app.ui.ActionBar.ActionBarListener;
 import eu.signme.app.ui.SuccessToast;
+import eu.signme.app.util.Fonts;
 import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
 
@@ -62,8 +63,7 @@ public class MyProfileActivity extends SignMeActivity implements
 	protected void onResume() {
 		super.onResume();
 		actionBar.hideMenu();
-		actionBar.setNameAndBeer(Utils.getStringFromPrefs("name"),
-				Utils.getIntFromPrefs("beer"));
+		actionBar.setBeer(Utils.getIntFromPrefs("beer"));
 	}
 
 	private void bindViews() {
@@ -73,6 +73,19 @@ public class MyProfileActivity extends SignMeActivity implements
 		txtBeer = (TextView) findViewById(R.id.txt_beers);
 		btnChangePass = (Button) findViewById(R.id.btn_change_password);
 
+		TextView txtLabelName = (TextView) findViewById(R.id.txt_label_name);
+		TextView txtLabelPassword = (TextView) findViewById(R.id.txt_label_password);
+		TextView txtPassword = (TextView) findViewById(R.id.txt_password);
+		TextView txtLabelBeer = (TextView) findViewById(R.id.txt_label_beer);
+
+		txtLabelName.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtName.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtLabelPassword.setTypeface(Fonts
+				.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtPassword.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtLabelBeer.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+		txtBeer.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
+
 		btnEditName.setOnClickListener(this);
 		btnChangePass.setOnClickListener(this);
 
@@ -80,13 +93,19 @@ public class MyProfileActivity extends SignMeActivity implements
 
 	@Override
 	public void onMenuItemClicked(int itemId) {
+		Intent intent;
 		switch (itemId) {
 		case ActionBar.ICON_LEFT:
 			finish();
 			break;
-		case ActionBar.SETTINGS:
-			Intent intent = new Intent(this, MyProfileActivity.class);
+		case ActionBar.TOP_COMRADES:
+			intent = new Intent(this, TopComradesActivity.class);
 			startActivity(intent);
+			break;
+		case ActionBar.SETTINGS:
+			intent = new Intent(this, MyProfileActivity.class);
+			startActivity(intent);
+			finish();
 			break;
 		case ActionBar.LOGOUT:
 			Utils.clearPrefs();
@@ -137,7 +156,6 @@ public class MyProfileActivity extends SignMeActivity implements
 					String name = response.getName();
 					Utils.saveToPrefs("name", name);
 					txtName.setText(name);
-					actionBar.setName(name);
 					editNameDialog.dismiss();
 					SuccessToast toast = new SuccessToast(
 							MyProfileActivity.this, getResources().getString(

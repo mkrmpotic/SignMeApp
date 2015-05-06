@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
@@ -17,6 +18,7 @@ import eu.signme.app.api.SignMeAPI;
 import eu.signme.app.api.SignMeAPI.LoginHandler;
 import eu.signme.app.api.response.ErrorResponse;
 import eu.signme.app.api.response.LoginResponse;
+import eu.signme.app.util.Fonts;
 import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
 
@@ -30,18 +32,22 @@ public class EmailSentActivity extends SignMeActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_email_sent);
-		
+
 		Intent i = getIntent();
 		email = i.getExtras().getString("email");
 		password = i.getExtras().getString("password");
-		Log.i("email", email);
-		Log.i("pass", password);
 
 		bindViews();
 	}
 
 	private void bindViews() {
 		btnReload = (Button) findViewById(R.id.btn_reload);
+
+		TextView txtTitle = (TextView) findViewById(R.id.txt_title);
+		TextView txtSubtitle = (TextView) findViewById(R.id.txt_subtitle);
+
+		txtTitle.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_BOLD));
+		txtSubtitle.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
 
 		btnReload.setOnClickListener(this);
 	}
@@ -59,8 +65,7 @@ public class EmailSentActivity extends SignMeActivity implements
 						Utils.saveToPrefs("name", response.getName());
 						Utils.saveToPrefs("id", response.getId());
 						Utils.saveToPrefs("beer", response.getBeers());
-						Intent intent = new Intent(
-								EmailSentActivity.this,
+						Intent intent = new Intent(EmailSentActivity.this,
 								AccountActivatedActivity.class);
 						startActivity(intent);
 						finish();

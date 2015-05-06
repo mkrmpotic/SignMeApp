@@ -8,17 +8,20 @@ import android.widget.TextView;
 import eu.signme.app.R;
 
 public class SignaturesRowHolder extends RecyclerView.ViewHolder {
-	public TextView txtName, txtCount;
+	public TextView txtName, txtCount, txtBeer, txtSigned;
 	public ImageView imgThick;
 	public RelativeLayout rlSignature;
 
 	public SignaturesRowHolder(View view) {
 		super(view);
 
-		this.rlSignature = (RelativeLayout) view.findViewById(R.id.rl_signature);
+		this.rlSignature = (RelativeLayout) view
+				.findViewById(R.id.rl_signature);
 		this.imgThick = (ImageView) view.findViewById(R.id.icon_thick);
 		this.txtCount = (TextView) view.findViewById(R.id.txt_count);
 		this.txtName = (TextView) view.findViewById(R.id.txt_name);
+		this.txtBeer = (TextView) view.findViewById(R.id.txt_beer);
+		this.txtSigned = (TextView) view.findViewById(R.id.txt_signed);
 	}
 
 }

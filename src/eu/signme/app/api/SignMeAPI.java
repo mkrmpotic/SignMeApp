@@ -16,6 +16,7 @@ import eu.signme.app.api.response.ChangePasswordResponse;
 import eu.signme.app.api.response.CreateLectureResponse;
 import eu.signme.app.api.response.GetLecturesResponse;
 import eu.signme.app.api.response.GetSignaturesResponse;
+import eu.signme.app.api.response.GetTopComradesResponse;
 import eu.signme.app.api.response.LoginResponse;
 import eu.signme.app.api.response.RegisterGcmResponse;
 import eu.signme.app.api.response.RegistrationResponse;
@@ -39,6 +40,7 @@ public class SignMeAPI {
 	public static final String SIGN = "swipe/";
 	public static final String REQUEST_SIGN = "signrequest/";
 	public static final String RESEND_CONFIRMATION_EMAIL = "resend/";
+	public static final String TOP_COMRADES = "top/";
 
 	private static String getFullUrl(String secondPart) {
 		return BASE_URL + secondPart;
@@ -233,7 +235,7 @@ public class SignMeAPI {
 	}
 
 	public static void createLecture(String name, String start, String end,
-			boolean today, final CreateLectureHandler handler) {
+			String day, final CreateLectureHandler handler) {
 
 		JSONObject obj = new JSONObject();
 
@@ -241,7 +243,7 @@ public class SignMeAPI {
 			obj.put("name", name);
 			obj.put("start", Integer.parseInt(start));
 			obj.put("end", Integer.parseInt(end));
-			obj.put("today", today);
+			obj.put("date", day);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -370,11 +372,6 @@ public class SignMeAPI {
 				});
 	}
 
-	/**
-	 * RegisterGcmHandler Response Handler
-	 * 
-	 * @author Marin
-	 */
 	public interface ChangeNameHandler {
 		public void onSuccess(ChangeNameResponse response);
 
@@ -410,11 +407,6 @@ public class SignMeAPI {
 				});
 	}
 
-	/**
-	 * RegisterGcmHandler Response Handler
-	 * 
-	 * @author Marin
-	 */
 	public interface ChangePasswordHandler {
 		public void onSuccess(ChangePasswordResponse response);
 
@@ -448,11 +440,6 @@ public class SignMeAPI {
 				});
 	}
 
-	/**
-	 * RegisterGcmHandler Response Handler
-	 * 
-	 * @author Marin
-	 */
 	public interface SignUserHandler {
 		public void onSuccess(SignUserResponse response);
 
@@ -487,26 +474,14 @@ public class SignMeAPI {
 				});
 	}
 
-	/**
-	 * RegisterGcmHandler Response Handler
-	 * 
-	 * @author Marin
-	 */
 	public interface RequestSignHandler {
 		public void onSuccess(RequestSignResponse response);
 
 		public void onError(VolleyError error);
 	}
 
-	/**
-	 * API method for login.
-	 * 
-	 * @param email
-	 * @param password
-	 * @param handler
-	 * @author Marin
-	 */
-	public static void resendEmail(String email, final ResendEmailHandler handler) {
+	public static void resendEmail(String email,
+			final ResendEmailHandler handler) {
 
 		JSONObject obj = new JSONObject();
 
@@ -533,13 +508,31 @@ public class SignMeAPI {
 				});
 	}
 
-	/**
-	 * Login Response Handler
-	 * 
-	 * @author Marin
-	 */
 	public interface ResendEmailHandler {
 		public void onSuccess(ResendEmailResponse response);
+
+		public void onError(VolleyError error);
+	}
+
+	public static void getTopComrades(final GetTopComradesHandler handler) {
+		sendGetWithToken(REST + TOP_COMRADES, GetTopComradesResponse.class,
+				new Listener<GetTopComradesResponse>() {
+					@Override
+					public void onResponse(GetTopComradesResponse response) {
+						handler.onSuccess(response);
+					}
+				}, new ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						handler.onError(error);
+					}
+
+				});
+	}
+
+	public interface GetTopComradesHandler {
+		public void onSuccess(GetTopComradesResponse response);
 
 		public void onError(VolleyError error);
 	}

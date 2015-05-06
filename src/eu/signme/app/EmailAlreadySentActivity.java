@@ -7,19 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 
 import eu.signme.app.api.SignMeAPI;
-import eu.signme.app.api.SignMeAPI.LoginHandler;
 import eu.signme.app.api.SignMeAPI.ResendEmailHandler;
 import eu.signme.app.api.response.ErrorResponse;
-import eu.signme.app.api.response.LoginResponse;
 import eu.signme.app.api.response.ResendEmailResponse;
+import eu.signme.app.util.Fonts;
 import eu.signme.app.util.NetworkUtil;
-import eu.signme.app.util.Utils;
 
 public class EmailAlreadySentActivity extends SignMeActivity implements
 		OnClickListener {
@@ -41,6 +40,12 @@ public class EmailAlreadySentActivity extends SignMeActivity implements
 
 	private void bindViews() {
 		btnResend = (Button) findViewById(R.id.btn_resend);
+
+		TextView txtTitle = (TextView) findViewById(R.id.txt_title);
+		TextView txtSubtitle = (TextView) findViewById(R.id.txt_subtitle);
+
+		txtTitle.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_BOLD));
+		txtSubtitle.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
 
 		btnResend.setOnClickListener(this);
 	}

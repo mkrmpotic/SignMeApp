@@ -18,14 +18,15 @@ import eu.signme.app.R;
 import eu.signme.app.ui.DayPicker;
 import eu.signme.app.ui.HourPicker;
 import eu.signme.app.ui.HourPicker.HourPickerListener;
+import eu.signme.app.util.Utils;
 
-public class NewLectureDialog extends DialogFragment implements
-		OnClickListener {
+public class NewLectureDialog extends DialogFragment implements OnClickListener {
 
 	public interface NewLectureDialogListener {
-		void onFinishCreateLecture(String name, String start, String end, boolean today);
+		void onFinishCreateLecture(String name, String start, String end,
+				String date);
 	}
-	
+
 	NewLectureDialogListener newLectureListener = null;
 
 	private EditText mEditText;
@@ -42,7 +43,8 @@ public class NewLectureDialog extends DialogFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.dialog_new_lecture, container);
-		hsvEndHours = (HorizontalScrollView) view.findViewById(R.id.hsv_end_hours);
+		hsvEndHours = (HorizontalScrollView) view
+				.findViewById(R.id.hsv_end_hours);
 		mEditText = (EditText) view.findViewById(R.id.input_name);
 		dayPicker = (DayPicker) view.findViewById(R.id.day_picker);
 		startHourPicker = (HourPicker) view
@@ -50,7 +52,7 @@ public class NewLectureDialog extends DialogFragment implements
 		endHourPicker = (HourPicker) view.findViewById(R.id.end_hour_picker);
 		btnCreate = (Button) view.findViewById(R.id.btn_create);
 		btnCreate.setOnClickListener(this);
-		
+
 		startHourPicker.removeLastElement();
 		endHourPicker.focusOnSecondElement();
 		startHourPicker.setHourPickerListener(new HourPickerListener() {
@@ -59,13 +61,12 @@ public class NewLectureDialog extends DialogFragment implements
 			public void onHourClicked(String itemId) {
 				endHourPicker.adaptHour(itemId);
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-					ObjectAnimator animator = ObjectAnimator.ofInt(
-							hsvEndHours, "scrollX",
-							endHourPicker.getHourPosition(itemId));
+					ObjectAnimator animator = ObjectAnimator.ofInt(hsvEndHours,
+							"scrollX", endHourPicker.getHourPosition(itemId));
 					animator.start();
 				} else {
-					hsvEndHours.scrollTo(
-							endHourPicker.getHourPosition(itemId), 0);
+					hsvEndHours.scrollTo(endHourPicker.getHourPosition(itemId),
+							0);
 				}
 
 			}
@@ -83,28 +84,25 @@ public class NewLectureDialog extends DialogFragment implements
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
-		// Show soft keyboard automatically
+
 		mEditText.requestFocus();
-
-
 
 		return view;
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_create:
-			newLectureListener.onFinishCreateLecture(mEditText.getText().toString(), startHourPicker.getHour(), endHourPicker.getHour(), dayPicker.getDay());
+			newLectureListener.onFinishCreateLecture(mEditText.getText()
+					.toString(), startHourPicker.getHour(), endHourPicker
+					.getHour(), Utils.getDate(dayPicker.getDay()));
 			break;
 		}
 	}
-	
+
 	public void setNewLectureDialogListener(NewLectureDialogListener listener) {
 		newLectureListener = listener;
 	}
-
-
-
 
 }

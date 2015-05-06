@@ -30,11 +30,11 @@ import eu.signme.app.api.response.SignUserResponse;
 import eu.signme.app.model.Signature;
 import eu.signme.app.ui.ActionBar;
 import eu.signme.app.ui.ActionBar.ActionBarListener;
+import eu.signme.app.ui.FailToast;
 import eu.signme.app.ui.SignMeToast;
-import eu.signme.app.ui.swipe.OnItemClickListener;
 import eu.signme.app.ui.swipe.RecyclerViewAdapter;
 import eu.signme.app.ui.swipe.SwipeToDismissTouchListener;
-import eu.signme.app.ui.swipe.SwipeableItemClickListener;
+import eu.signme.app.util.Fonts;
 import eu.signme.app.util.NetworkUtil;
 import eu.signme.app.util.Utils;
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
@@ -87,8 +87,7 @@ public class LectureActivity extends SignMeActivity implements
 		super.onResume();
 		getSignatures();
 		actionBar.hideMenu();
-		actionBar.setNameAndBeer(Utils.getStringFromPrefs("name"),
-				Utils.getIntFromPrefs("beer"));
+		actionBar.setBeer(Utils.getIntFromPrefs("beer"));
 	}
 
 	private void bindViews() {
@@ -97,6 +96,12 @@ public class LectureActivity extends SignMeActivity implements
 
 		txtName = (TextView) findViewById(R.id.txt_name);
 		txtDay = (TextView) findViewById(R.id.txt_day);
+
+		TextView txtNoSignatures = (TextView) findViewById(R.id.txt_no_signatures);
+
+		txtNoSignatures.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_BOLD));
+		txtName.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_MEDIUM));
+		txtDay.setTypeface(Fonts.getTypeface(this, Fonts.ROBOTO_LIGHT));
 
 		swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_signatures);
 		swipeRefreshLayout.setColorSchemeResources(R.color.signme_yellow,
@@ -169,19 +174,6 @@ public class LectureActivity extends SignMeActivity implements
 		mRecyclerView
 				.setOnScrollListener((RecyclerView.OnScrollListener) touchListener
 						.makeScrollListener());
-		mRecyclerView.addOnItemTouchListener(new SwipeableItemClickListener(
-				this, new OnItemClickListener() {
-					@Override
-					public void onItemClick(View view, int position) {
-						if (view.getId() == R.id.txt_signed) {
-							touchListener.processPendingDismisses();
-						} else { // R.id.txt_data
-							Toast.makeText(LectureActivity.this,
-									"Position " + position, Toast.LENGTH_SHORT)
-									.show();
-						}
-					}
-				}));
 
 	}
 
@@ -191,6 +183,10 @@ public class LectureActivity extends SignMeActivity implements
 		switch (itemId) {
 		case ActionBar.ICON_LEFT:
 			finish();
+			break;
+		case ActionBar.TOP_COMRADES:
+			intent = new Intent(this, TopComradesActivity.class);
+			startActivity(intent);
 			break;
 		case ActionBar.SETTINGS:
 			intent = new Intent(this, MyProfileActivity.class);
@@ -245,24 +241,34 @@ public class LectureActivity extends SignMeActivity implements
 		switch (v.getId()) {
 		case R.id.btn_sign_me:
 			if (NetworkUtil.getConnectivityStatus(this) != 0)
-				SignMeAPI.requestSign(id, new RequestSignHandler() {
+				if (Utils.getIntFromPrefs("beer") > 0)
+					SignMeAPI.requestSign(id, new RequestSignHandler() {
 
-					@Override
-					public void onSuccess(RequestSignResponse response) {
-						rlSignMe.setVisibility(View.GONE);
-						getSignatures();
-						SignMeToast toast = new SignMeToast(
-								LectureActivity.this, getResources().getString(
-										R.string.you_asked), Toast.LENGTH_LONG);
-						toast.show();
-					}
+						@Override
+						public void onSuccess(RequestSignResponse response) {
+							actionBar.setBeer(response.getBeers());
+							Utils.saveToPrefs("beer", response.getBeers());
+							rlSignMe.setVisibility(View.GONE);
+							getSignatures();
+							SignMeToast toast = new SignMeToast(
+									LectureActivity.this, getResources()
+											.getString(R.string.you_asked),
+									Toast.LENGTH_LONG);
+							toast.show();
+						}
 
-					@Override
-					public void onError(VolleyError error) {
-						// TODO Auto-generated method stub
+						@Override
+						public void onError(VolleyError error) {
+							// TODO Auto-generated method stub
 
-					}
-				});
+						}
+					});
+				else {
+					FailToast toast = new FailToast(LectureActivity.this,
+							getResources().getString(R.string.not_enough_beer),
+							Toast.LENGTH_LONG);
+					toast.show();
+				}
 			break;
 		}
 

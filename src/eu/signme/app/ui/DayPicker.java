@@ -32,7 +32,7 @@ public class DayPicker extends LinearLayout implements OnClickListener {
 		View view = inflate(context, R.layout.element_day_picker, null);
 		selected = (Button) view.findViewById(R.id.btn_today);
 		selected.setSelected(true);
-		
+
 		view.findViewById(R.id.btn_today).setOnClickListener(this);
 		view.findViewById(R.id.btn_tomorrow).setOnClickListener(this);
 
@@ -49,7 +49,7 @@ public class DayPicker extends LinearLayout implements OnClickListener {
 	public void setDayPickerListener(DayPickerListener listener) {
 		dayPickerListener = listener;
 	}
-	
+
 	public boolean getDay() {
 		if (selected.getId() == R.id.btn_today) {
 			return true;
