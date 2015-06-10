@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <permission
         android:name="eu.signme.app.permission.C2D_MESSAGE"
@@ -30,7 +32,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".SplashActivity"
-            android:label="@string/title_activity_splash" >
+            android:label="@string/title_activity_splash"
+            android:screenOrientation="portrait" >
             <intent-filter android:label="@string/app_name" >
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,47 +42,58 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:label="@string/title_activity_registration" >
+            android:label="@string/title_activity_registration"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".EmailSentActivity"
-            android:label="@string/title_activity_email_sent" >
+            android:label="@string/title_activity_email_sent"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".EmailAlreadySentActivity"
-            android:label="@string/title_activity_email_already_sent" >
+            android:label="@string/title_activity_email_already_sent"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AccountNotActivatedActivity"
-            android:label="@string/title_activity_account_not_activated" >
+            android:label="@string/title_activity_account_not_activated"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AccountActivatedActivity"
-            android:label="@string/title_activity_account_activated" >
+            android:label="@string/title_activity_account_activated"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".LecturesActivity"
-            android:label="@string/title_activity_lectures" >
+            android:label="@string/title_activity_lectures"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".LectureActivity"
-            android:label="@string/title_activity_lecture" >
+            android:label="@string/title_activity_lecture"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".MyProfileActivity"
-            android:label="@string/title_activity_my_profile" >
+            android:label="@string/title_activity_my_profile"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".NoConnectionActivity"
-            android:label="@string/title_activity_no_connection" >
+            android:label="@string/title_activity_no_connection"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".TopComradesActivity"
-            android:label="@string/title_activity_top_comrades" >
+            android:label="@string/title_activity_top_comrades"
+            android:screenOrientation="portrait" >
         </activity>
 
         <receiver

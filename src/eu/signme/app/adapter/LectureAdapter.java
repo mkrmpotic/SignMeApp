@@ -39,7 +39,7 @@ public class LectureAdapter extends RecyclerView.Adapter<LecturesRowHolder> {
 	public void onBindViewHolder(LecturesRowHolder feedListRowHolder, int i) {
 
 		feedListRowHolder.setPosition(i);
-		
+
 		if (i % 2 == 0) {
 			feedListRowHolder.view
 					.setBackgroundResource(R.drawable.listrow_dark_background);
@@ -47,25 +47,29 @@ public class LectureAdapter extends RecyclerView.Adapter<LecturesRowHolder> {
 			feedListRowHolder.view
 					.setBackgroundResource(R.drawable.listrow_light_background);
 		}
-		
-		
+
 		TextView txtName = feedListRowHolder.txtName;
 		TextView txtDay = feedListRowHolder.txtDay;
 		TextView txtCount = feedListRowHolder.txtCount;
 		txtName.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_MEDIUM));
 		txtDay.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_LIGHT));
 		txtCount.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_THIN));
-		
-
 
 		Lecture lecture = lectures.get(i);
-		
+
 		txtName.setText(lecture.getName());
 
-		txtDay.setText(Utils.getRelativeDay(lecture.getDate()));
+		if (Utils.getRelativeDay(lecture.getDate()).equals("today")) {
+			txtDay.setTextColor(mContext.getResources().getColorStateList(
+					R.drawable.listview_subtitle_text_color_red));
+			txtDay.setText("today");
+		} else {
+			txtDay.setTextColor(mContext.getResources().getColorStateList(
+					R.drawable.listview_subtitle_text_color_green));
+			txtDay.setText("tomorrow");
+		}
 
-		txtCount.setText(Integer.toString(lecture
-				.getSignCount()));
+		txtCount.setText(Integer.toString(lecture.getSignCount()));
 
 	}
 
@@ -73,11 +77,11 @@ public class LectureAdapter extends RecyclerView.Adapter<LecturesRowHolder> {
 	public int getItemCount() {
 		return (null != lectures ? lectures.size() : 0);
 	}
-	
+
 	public void setOnItemClickListener(OnItemClickListener listener) {
 		this.clickListener = listener;
 	}
-	
+
 	public Lecture getItem(int location) {
 		return lectures.get(location);
 	}

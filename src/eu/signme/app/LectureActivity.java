@@ -5,7 +5,9 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +29,7 @@ import eu.signme.app.api.SignMeAPI.SignUserHandler;
 import eu.signme.app.api.response.GetSignaturesResponse;
 import eu.signme.app.api.response.RequestSignResponse;
 import eu.signme.app.api.response.SignUserResponse;
+import eu.signme.app.dialog.SignatureImageDialog;
 import eu.signme.app.model.Signature;
 import eu.signme.app.ui.ActionBar;
 import eu.signme.app.ui.ActionBar.ActionBarListener;
@@ -51,6 +54,7 @@ public class LectureActivity extends SignMeActivity implements
 	private String lectureName, lectureDay, lectureHour;
 	private SwipeRefreshLayout swipeRefreshLayout;
 	private SmoothProgressBar progressBar;
+	private SignatureImageDialog signatureImgDialog;
 
 	private RecyclerView mRecyclerView;
 	private SignatureAdapter adapter;
@@ -79,6 +83,12 @@ public class LectureActivity extends SignMeActivity implements
 
 		txtName.setText(lectureName);
 		txtDay.setText(getString(R.string.starts_at, lectureDay, lectureHour));
+		
+		if (lectureDay.equals("today")) {
+			txtDay.setTextColor(getResources().getColor(R.color.signme_red));
+		} else {
+			txtDay.setTextColor(getResources().getColor(R.color.signme_green));
+		}
 
 	}
 
@@ -124,11 +134,14 @@ public class LectureActivity extends SignMeActivity implements
 		btnSignMe.setOnClickListener(this);
 
 		adapter = new SignatureAdapter(LectureActivity.this, signatures, userId);
+	
+		
 		mRecyclerView.setAdapter(adapter);
 
 		final SwipeToDismissTouchListener<RecyclerViewAdapter> touchListener = new SwipeToDismissTouchListener<>(
 				new RecyclerViewAdapter(mRecyclerView),
 				new SwipeToDismissTouchListener.DismissCallbacks<RecyclerViewAdapter>() {
+					
 					@Override
 					public boolean canDismiss(int position) {
 						Signature currentSignature = signatures.get(position);
@@ -165,6 +178,14 @@ public class LectureActivity extends SignMeActivity implements
 										}
 									});
 
+					}
+					
+					@Override
+					public void onClick(RecyclerViewAdapter view, int position) {
+						showSignatureImgDialog(signatures.get(position));
+						Signature currentSignature = signatures.get(position);
+						
+						
 					}
 				});
 		mRecyclerView.setOnTouchListener(touchListener);
@@ -272,6 +293,12 @@ public class LectureActivity extends SignMeActivity implements
 			break;
 		}
 
+	}
+	
+	private void showSignatureImgDialog(Signature signature) {
+		FragmentManager fm = getSupportFragmentManager();
+		signatureImgDialog = new SignatureImageDialog(signature);
+		signatureImgDialog.show(fm, "dialog_signature_img");
 	}
 
 }

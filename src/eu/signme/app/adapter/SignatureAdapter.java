@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import eu.signme.app.R;
+import eu.signme.app.model.Lecture;
 import eu.signme.app.model.Signature;
+import eu.signme.app.ui.swipe.OnItemClickListener;
 import eu.signme.app.util.Fonts;
 import eu.signme.app.viewholder.SignaturesRowHolder;
 
@@ -18,6 +20,7 @@ public class SignatureAdapter extends RecyclerView.Adapter<SignaturesRowHolder> 
 	private List<Signature> signatures;
 	private Context mContext;
 	private int myId;
+	private OnItemClickListener clickListener = null;
 
 	public SignatureAdapter(Context context, List<Signature> signatures,
 			int userId) {
@@ -82,5 +85,9 @@ public class SignatureAdapter extends RecyclerView.Adapter<SignaturesRowHolder> 
 	@Override
 	public int getItemCount() {
 		return (null != signatures ? signatures.size() : 0);
+	}
+
+	public Signature getItem(int location) {
+		return signatures.get(location);
 	}
 }

@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_name"
             android:layout_marginTop="-8dp"
-            android:textColor="@drawable/listview_subtitle_text_color"
+            android:textColor="@drawable/listview_subtitle_text_color_red"
             android:textSize="22sp" />
     </RelativeLayout>
 

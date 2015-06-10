@@ -2,10 +2,12 @@ package eu.signme.app.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import eu.signme.app.R;
+import eu.signme.app.ui.swipe.OnItemClickListener;
 
 public class SignaturesRowHolder extends RecyclerView.ViewHolder {
 	public TextView txtName, txtCount, txtBeer, txtSigned;
@@ -23,5 +25,6 @@ public class SignaturesRowHolder extends RecyclerView.ViewHolder {
 		this.txtBeer = (TextView) view.findViewById(R.id.txt_beer);
 		this.txtSigned = (TextView) view.findViewById(R.id.txt_signed);
 	}
+
 
 }

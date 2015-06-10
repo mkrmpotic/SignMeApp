@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import eu.signme.app.R;
 import eu.signme.app.model.Comrade;
@@ -46,6 +47,7 @@ public class ComradeAdapter extends RecyclerView.Adapter<ComradesRowHolder> {
 		TextView txtName = feedListRowHolder.txtName;
 		TextView txtBeer = feedListRowHolder.txtBeer;
 		TextView txtCount = feedListRowHolder.txtCount;
+		ImageView imgMedal = feedListRowHolder.imgMedal;;
 		txtName.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_MEDIUM));
 		txtBeer.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_LIGHT));
 		txtCount.setTypeface(Fonts.getTypeface(mContext, Fonts.ROBOTO_THIN));
@@ -56,6 +58,14 @@ public class ComradeAdapter extends RecyclerView.Adapter<ComradesRowHolder> {
 
 		txtBeer.setText(mContext.getString(R.string.earned_beers,
 				comrade.getBeer()));
+		
+		if (i == 0) {
+			txtCount.setVisibility(View.GONE);
+			imgMedal.setVisibility(View.VISIBLE);
+		} else {
+			imgMedal.setVisibility(View.GONE);
+			txtCount.setVisibility(View.VISIBLE);
+		}
 
 		txtCount.setText(Integer.toString(i + 1));
 

@@ -61,6 +61,8 @@
     <string name="name_label">Name:</string>
     <string name="password_label">Pswrd:</string>
     <string name="beer_label">Beers:</string>
+    <string name="image_label">Image:</string>
+    <string name="image_none">NONE</string>
     <string name="asterisks">******</string>
     
     <!-- TOP COMRADES ACTIVITY -->
@@ -92,6 +94,9 @@
     <string name="new_password_again">new password again:</string>
     <string name="submit">submit</string>
     
+    <!-- SIGNATURE IMAGE DIALOG -->
+    <string name="no_signature_image">THE USER HAS NO SIGNATURE IMAGE.</string>
+    
     <!-- TOASTS -->
     <string name="lecture_created">Lecture successfully created.</string>
     <string name="name_changed">Name successfully changed.</string>
@@ -99,6 +104,8 @@
     <string name="you_asked">You asked for a signature.</string>
     <string name="not_enough_beer">You don\'t have any beers left.</string>
     <string name="minus_one">-1</string>
+    <string name="image_uploaded">Image successfully uploaded.</string>
+    <string name="image_not_uploaded">Error uploading an image.</string>
     
     <!-- PUSH NOTIFS -->
     <string name="you_have_been_signed">You\'ve been signed!</string>

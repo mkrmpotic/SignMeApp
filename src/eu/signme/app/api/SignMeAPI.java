@@ -1,22 +1,29 @@
 package eu.signme.app.api;
 
+import java.io.File;
 import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.graphics.Bitmap;
+
 import com.android.volley.Request.Method;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 
 import eu.signme.app.api.request.GsonRequest;
+import eu.signme.app.api.request.MultipartRequest;
+import eu.signme.app.api.response.ChangeImageResponse;
 import eu.signme.app.api.response.ChangeNameResponse;
 import eu.signme.app.api.response.ChangePasswordResponse;
 import eu.signme.app.api.response.CreateLectureResponse;
 import eu.signme.app.api.response.GetLecturesResponse;
 import eu.signme.app.api.response.GetSignaturesResponse;
 import eu.signme.app.api.response.GetTopComradesResponse;
+import eu.signme.app.api.response.GetUserImagePathResponse;
 import eu.signme.app.api.response.LoginResponse;
 import eu.signme.app.api.response.RegisterGcmResponse;
 import eu.signme.app.api.response.RegistrationResponse;
@@ -37,10 +44,12 @@ public class SignMeAPI {
 	public static final String LECTURE = "lecture/";
 	public static final String CHANGE_NAME = "namechange/";
 	public static final String CHANGE_PASS = "passchange/";
+	public static final String CHANGE_IMG = "mysignpic/";
 	public static final String SIGN = "swipe/";
 	public static final String REQUEST_SIGN = "signrequest/";
 	public static final String RESEND_CONFIRMATION_EMAIL = "resend/";
 	public static final String TOP_COMRADES = "top/";
+	public static final String SIGN_IMAGE = "signpic/";
 
 	private static String getFullUrl(String secondPart) {
 		return BASE_URL + secondPart;
@@ -106,6 +115,26 @@ public class SignMeAPI {
 				.getRequestQueue()
 				.add(new GsonRequest<>(Method.PUT, getFullUrl(urlPart), obj,
 						customClass, headerMap, listener, errorListener));
+	}
+
+	private static <T> void sendMultipartWithToken(String urlPart,
+			Class<T> customClass, File image, Listener<T> listener,
+			ErrorListener errorListener) {
+		HashMap<String, String> headerMap = new HashMap<String, String>();
+		headerMap.put("Authorization",
+				"Token " + Utils.getStringFromPrefs("token"));
+		VolleySingleton
+				.getInstance()
+				.getRequestQueue()
+				.add(new MultipartRequest<>(getFullUrl(urlPart), customClass,
+						errorListener, listener, image, headerMap));
+	}
+	
+	private static <T> void getImage(String urlPart, Listener<Bitmap> listener, ErrorListener errorListener) {
+		VolleySingleton
+				.getInstance()
+				.getRequestQueue()
+				.add(new ImageRequest(getFullUrl(urlPart), listener, 0, 0, null, null, errorListener));
 	}
 
 	/**
@@ -533,6 +562,79 @@ public class SignMeAPI {
 
 	public interface GetTopComradesHandler {
 		public void onSuccess(GetTopComradesResponse response);
+
+		public void onError(VolleyError error);
+	}
+
+	public static void changeImage(File image, final ChangeImageHandler handler) {
+
+		sendMultipartWithToken(REST + CHANGE_IMG, ChangeImageResponse.class,
+				image, new Listener<ChangeImageResponse>() {
+					@Override
+					public void onResponse(ChangeImageResponse response) {
+						handler.onSuccess(response);
+					}
+				}, new ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						handler.onError(error);
+					}
+
+				});
+	}
+
+	public interface ChangeImageHandler {
+		public void onSuccess(ChangeImageResponse response);
+
+		public void onError(VolleyError error);
+	}
+
+	public static void getUserImagePath(int userId,
+			final GetUserImagePathHandler handler) {
+
+		sendGetWithToken(REST + SIGN_IMAGE + Integer.toString(userId),
+				GetUserImagePathResponse.class,
+				new Listener<GetUserImagePathResponse>() {
+					@Override
+					public void onResponse(GetUserImagePathResponse response) {
+						handler.onSuccess(response);
+					}
+				}, new ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						handler.onError(error);
+					}
+
+				});
+	}
+
+	public interface GetUserImagePathHandler {
+		public void onSuccess(GetUserImagePathResponse response);
+
+		public void onError(VolleyError error);
+	}
+
+	public static void getImage(String url, final GetImageHandler handler) {
+
+		getImage(url, new Listener<Bitmap>() {
+			@Override
+			public void onResponse(Bitmap response) {
+				handler.onSuccess(response);
+			}
+		}, new ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				handler.onError(error);
+			}
+
+		});
+	}
+
+	public interface GetImageHandler {
+		public void onSuccess(Bitmap response);
 
 		public void onError(VolleyError error);
 	}

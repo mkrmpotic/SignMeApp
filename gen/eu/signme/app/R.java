@@ -2139,42 +2139,45 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_light=0x7f020066;
         public static final int dialog_gray_background=0x7f020067;
         public static final int dialog_green_background=0x7f020068;
-        public static final int edittext_background=0x7f020069;
-        public static final int edittext_bold_gray_background=0x7f02006a;
-        public static final int edittext_bold_green_background=0x7f02006b;
-        public static final int hour_picker_background=0x7f02006c;
-        public static final int ic_back=0x7f02006d;
-        public static final int ic_badge=0x7f02006e;
-        public static final int ic_beer=0x7f02006f;
-        public static final int ic_beer_yellow=0x7f020070;
-        public static final int ic_edit=0x7f020071;
-        public static final int ic_glasses=0x7f020072;
-        public static final int ic_launcher=0x7f020073;
-        public static final int ic_menu=0x7f020074;
-        public static final int ic_menu_white=0x7f020075;
-        public static final int ic_plus=0x7f020076;
-        public static final int ic_plusone_medium_off_client=0x7f020077;
-        public static final int ic_plusone_small_off_client=0x7f020078;
-        public static final int ic_plusone_standard_off_client=0x7f020079;
-        public static final int ic_plusone_tall_off_client=0x7f02007a;
-        public static final int ic_sad=0x7f02007b;
-        public static final int ic_thick=0x7f02007c;
-        public static final int ic_white_thick=0x7f02007d;
-        public static final int listrow_dark_background=0x7f02007e;
-        public static final int listrow_light_background=0x7f02007f;
-        public static final int listview_subtitle_text_color=0x7f020080;
-        public static final int listview_title_text_color=0x7f020081;
-        public static final int logo=0x7f020082;
-        public static final int menu_background=0x7f020083;
-        public static final int paper_plane=0x7f020084;
-        public static final int pen=0x7f020085;
-        public static final int police=0x7f020086;
-        public static final int powered_by_google_dark=0x7f020087;
-        public static final int powered_by_google_light=0x7f020088;
-        public static final int text_link_active_layer=0x7f020089;
-        public static final int text_link_background=0x7f02008a;
-        public static final int text_link_normal_layer=0x7f02008b;
-        public static final int wifi=0x7f02008c;
+        public static final int dialog_yellow_background=0x7f020069;
+        public static final int edittext_background=0x7f02006a;
+        public static final int edittext_bold_gray_background=0x7f02006b;
+        public static final int edittext_bold_green_background=0x7f02006c;
+        public static final int hour_picker_background=0x7f02006d;
+        public static final int ic_back=0x7f02006e;
+        public static final int ic_badge=0x7f02006f;
+        public static final int ic_beer=0x7f020070;
+        public static final int ic_beer_yellow=0x7f020071;
+        public static final int ic_edit=0x7f020072;
+        public static final int ic_glasses=0x7f020073;
+        public static final int ic_launcher=0x7f020074;
+        public static final int ic_medal=0x7f020075;
+        public static final int ic_menu=0x7f020076;
+        public static final int ic_menu_white=0x7f020077;
+        public static final int ic_plus=0x7f020078;
+        public static final int ic_plusone_medium_off_client=0x7f020079;
+        public static final int ic_plusone_small_off_client=0x7f02007a;
+        public static final int ic_plusone_standard_off_client=0x7f02007b;
+        public static final int ic_plusone_tall_off_client=0x7f02007c;
+        public static final int ic_sad=0x7f02007d;
+        public static final int ic_thick=0x7f02007e;
+        public static final int ic_white_thick=0x7f02007f;
+        public static final int listrow_dark_background=0x7f020080;
+        public static final int listrow_light_background=0x7f020081;
+        public static final int listview_subtitle_text_color_green=0x7f020082;
+        public static final int listview_subtitle_text_color_red=0x7f020083;
+        public static final int listview_title_text_color=0x7f020084;
+        public static final int logo=0x7f020085;
+        public static final int menu_background=0x7f020086;
+        public static final int paper_plane=0x7f020087;
+        public static final int pen=0x7f020088;
+        public static final int police=0x7f020089;
+        public static final int powered_by_google_dark=0x7f02008a;
+        public static final int powered_by_google_light=0x7f02008b;
+        public static final int text_link_active_layer=0x7f02008c;
+        public static final int text_link_background=0x7f02008d;
+        public static final int text_link_normal_layer=0x7f02008e;
+        public static final int wifi=0x7f02008f;
     }
     public static final class id {
         public static final int action_bar=0x7f0b0046;
@@ -2194,54 +2197,55 @@ containing a value of this type.
         public static final int always=0x7f0b0018;
         public static final int beginning=0x7f0b001f;
         public static final int book_now=0x7f0b002d;
-        public static final int btn_10=0x7f0b00b2;
-        public static final int btn_11=0x7f0b00b3;
-        public static final int btn_12=0x7f0b00b4;
-        public static final int btn_13=0x7f0b00b5;
-        public static final int btn_14=0x7f0b00b6;
-        public static final int btn_15=0x7f0b00b7;
-        public static final int btn_16=0x7f0b00b8;
-        public static final int btn_17=0x7f0b00b9;
-        public static final int btn_18=0x7f0b00ba;
-        public static final int btn_19=0x7f0b00bb;
-        public static final int btn_20=0x7f0b00bc;
-        public static final int btn_21=0x7f0b00bd;
-        public static final int btn_8=0x7f0b00b0;
-        public static final int btn_9=0x7f0b00b1;
+        public static final int btn_10=0x7f0b00b9;
+        public static final int btn_11=0x7f0b00ba;
+        public static final int btn_12=0x7f0b00bb;
+        public static final int btn_13=0x7f0b00bc;
+        public static final int btn_14=0x7f0b00bd;
+        public static final int btn_15=0x7f0b00be;
+        public static final int btn_16=0x7f0b00bf;
+        public static final int btn_17=0x7f0b00c0;
+        public static final int btn_18=0x7f0b00c1;
+        public static final int btn_19=0x7f0b00c2;
+        public static final int btn_20=0x7f0b00c3;
+        public static final int btn_21=0x7f0b00c4;
+        public static final int btn_8=0x7f0b00b7;
+        public static final int btn_9=0x7f0b00b8;
+        public static final int btn_change_image=0x7f0b0083;
         public static final int btn_change_password=0x7f0b007b;
         public static final int btn_continue=0x7f0b0058;
-        public static final int btn_create=0x7f0b00a2;
+        public static final int btn_create=0x7f0b00a8;
         public static final int btn_create_lecture=0x7f0b0068;
         public static final int btn_edit_name=0x7f0b0078;
         public static final int btn_login=0x7f0b0072;
-        public static final int btn_logout=0x7f0b00ad;
+        public static final int btn_logout=0x7f0b00b4;
         public static final int btn_register=0x7f0b0075;
         public static final int btn_reload=0x7f0b005a;
         public static final int btn_resend=0x7f0b0059;
-        public static final int btn_retry=0x7f0b007f;
-        public static final int btn_save=0x7f0b0093;
-        public static final int btn_settings=0x7f0b00ac;
+        public static final int btn_retry=0x7f0b0084;
+        public static final int btn_save=0x7f0b0099;
+        public static final int btn_settings=0x7f0b00b3;
         public static final int btn_sign_me=0x7f0b0063;
-        public static final int btn_submit=0x7f0b0091;
-        public static final int btn_today=0x7f0b00ae;
-        public static final int btn_tomorrow=0x7f0b00af;
-        public static final int btn_top_comrades=0x7f0b00ab;
+        public static final int btn_submit=0x7f0b0097;
+        public static final int btn_today=0x7f0b00b5;
+        public static final int btn_tomorrow=0x7f0b00b6;
+        public static final int btn_top_comrades=0x7f0b00b2;
         public static final int buyButton=0x7f0b002a;
         public static final int buy_now=0x7f0b002e;
         public static final int buy_with_google=0x7f0b002f;
         public static final int checkbox=0x7f0b003e;
         public static final int classic=0x7f0b0030;
         public static final int collapseActionView=0x7f0b0019;
-        public static final int day_picker=0x7f0b0097;
+        public static final int day_picker=0x7f0b009d;
         public static final int decor_content_parent=0x7f0b0044;
         public static final int default_activity_button=0x7f0b0039;
         public static final int dialog=0x7f0b001d;
         public static final int disableHome=0x7f0b0011;
         public static final int dropdown=0x7f0b001e;
-        public static final int edit_name=0x7f0b0089;
+        public static final int edit_name=0x7f0b008f;
         public static final int edit_query=0x7f0b0048;
         public static final int end=0x7f0b0020;
-        public static final int end_hour_picker=0x7f0b00a1;
+        public static final int end_hour_picker=0x7f0b00a7;
         public static final int expand_activities_button=0x7f0b0037;
         public static final int expanded_menu=0x7f0b003d;
         public static final int grayscale=0x7f0b0031;
@@ -2249,31 +2253,33 @@ containing a value of this type.
         public static final int holo_light=0x7f0b0026;
         public static final int home=0x7f0b0000;
         public static final int homeAsUp=0x7f0b0012;
-        public static final int hsv_day_picker=0x7f0b0096;
-        public static final int hsv_end_hours=0x7f0b00a0;
-        public static final int hsv_start_hours=0x7f0b009b;
+        public static final int hsv_day_picker=0x7f0b009c;
+        public static final int hsv_end_hours=0x7f0b00a6;
+        public static final int hsv_start_hours=0x7f0b00a1;
         public static final int hybrid=0x7f0b0022;
         public static final int icon=0x7f0b003b;
-        public static final int icon_beer=0x7f0b00a9;
-        public static final int icon_left=0x7f0b00a4;
-        public static final int icon_menu=0x7f0b00a6;
-        public static final int icon_thick=0x7f0b00c0;
+        public static final int icon_beer=0x7f0b00b0;
+        public static final int icon_left=0x7f0b00ab;
+        public static final int icon_medal=0x7f0b008b;
+        public static final int icon_menu=0x7f0b00ad;
+        public static final int icon_thick=0x7f0b00c7;
         public static final int ifRoom=0x7f0b001a;
         public static final int image=0x7f0b0038;
-        public static final int img_badge=0x7f0b0085;
+        public static final int img_badge=0x7f0b008a;
         public static final int img_glasses=0x7f0b005e;
         public static final int img_logo=0x7f0b006a;
         public static final int img_paper_plane=0x7f0b0055;
-        public static final int input_current_password=0x7f0b008c;
+        public static final int img_signature=0x7f0b0082;
+        public static final int input_current_password=0x7f0b0092;
         public static final int input_email=0x7f0b006e;
-        public static final int input_name=0x7f0b0081;
-        public static final int input_new_password=0x7f0b008e;
-        public static final int input_new_password_again=0x7f0b0090;
+        public static final int input_name=0x7f0b0086;
+        public static final int input_new_password=0x7f0b0094;
+        public static final int input_new_password_again=0x7f0b0096;
         public static final int input_password=0x7f0b0071;
-        public static final int input_password_again=0x7f0b0084;
+        public static final int input_password_again=0x7f0b0089;
         public static final int listMode=0x7f0b000e;
         public static final int list_item=0x7f0b003a;
-        public static final int logo=0x7f0b00a5;
+        public static final int logo=0x7f0b00ac;
         public static final int match_parent=0x7f0b002c;
         public static final int middle=0x7f0b0021;
         public static final int monochrome=0x7f0b0032;
@@ -2286,26 +2292,27 @@ containing a value of this type.
         public static final int progress_horizontal=0x7f0b0008;
         public static final int radio=0x7f0b0040;
         public static final int recycler_view=0x7f0b0065;
-        public static final int rl_action_bar=0x7f0b00a3;
+        public static final int rl_action_bar=0x7f0b00aa;
         public static final int rl_beer=0x7f0b007c;
-        public static final int rl_beers=0x7f0b00a8;
+        public static final int rl_beers=0x7f0b00af;
         public static final int rl_content_container=0x7f0b0054;
         public static final int rl_email_container=0x7f0b006c;
-        public static final int rl_end_hours=0x7f0b009e;
+        public static final int rl_end_hours=0x7f0b00a4;
+        public static final int rl_image=0x7f0b007f;
         public static final int rl_lecture_header=0x7f0b005d;
-        public static final int rl_menu=0x7f0b00a7;
+        public static final int rl_menu=0x7f0b00ae;
         public static final int rl_name=0x7f0b0076;
-        public static final int rl_name_beer_container=0x7f0b0087;
-        public static final int rl_name_container=0x7f0b0080;
+        public static final int rl_name_beer_container=0x7f0b008d;
+        public static final int rl_name_container=0x7f0b0085;
         public static final int rl_name_date_container=0x7f0b005f;
         public static final int rl_no_lectures_container=0x7f0b005b;
         public static final int rl_password=0x7f0b0079;
-        public static final int rl_password_again_container=0x7f0b0082;
+        public static final int rl_password_again_container=0x7f0b0087;
         public static final int rl_password_container=0x7f0b006f;
         public static final int rl_register_container=0x7f0b0073;
         public static final int rl_sign_me=0x7f0b0062;
-        public static final int rl_signature=0x7f0b00bf;
-        public static final int rl_start_hours=0x7f0b0099;
+        public static final int rl_signature=0x7f0b00c6;
+        public static final int rl_start_hours=0x7f0b009f;
         public static final int sandbox=0x7f0b0028;
         public static final int satellite=0x7f0b0023;
         public static final int search_badge=0x7f0b004a;
@@ -2328,7 +2335,7 @@ containing a value of this type.
         public static final int spb_interpolator_decelerate=0x7f0b000b;
         public static final int spb_interpolator_linear=0x7f0b000c;
         public static final int split_action_bar=0x7f0b0004;
-        public static final int start_hour_picker=0x7f0b009c;
+        public static final int start_hour_picker=0x7f0b00a2;
         public static final int strict_sandbox=0x7f0b0029;
         public static final int submit_area=0x7f0b0051;
         public static final int swipe_refresh_lectures=0x7f0b0069;
@@ -2336,37 +2343,40 @@ containing a value of this type.
         public static final int tabMode=0x7f0b0010;
         public static final int terrain=0x7f0b0024;
         public static final int title=0x7f0b003c;
-        public static final int toast_layout_root=0x7f0b00c1;
-        public static final int txt_at_approx=0x7f0b0098;
-        public static final int txt_beer=0x7f0b0088;
-        public static final int txt_beer_count=0x7f0b00aa;
+        public static final int toast_layout_root=0x7f0b00c8;
+        public static final int txt_at_approx=0x7f0b009e;
+        public static final int txt_beer=0x7f0b008e;
+        public static final int txt_beer_count=0x7f0b00b1;
         public static final int txt_beers=0x7f0b007e;
-        public static final int txt_change_password=0x7f0b008a;
-        public static final int txt_count=0x7f0b0086;
-        public static final int txt_current_password=0x7f0b008b;
+        public static final int txt_change_password=0x7f0b0090;
+        public static final int txt_count=0x7f0b008c;
+        public static final int txt_current_password=0x7f0b0091;
         public static final int txt_day=0x7f0b0061;
-        public static final int txt_edit_name=0x7f0b0092;
+        public static final int txt_edit_name=0x7f0b0098;
         public static final int txt_email=0x7f0b006d;
-        public static final int txt_end_oclock=0x7f0b009f;
-        public static final int txt_ends_at_approx=0x7f0b009d;
+        public static final int txt_end_oclock=0x7f0b00a5;
+        public static final int txt_ends_at_approx=0x7f0b00a3;
         public static final int txt_error=0x7f0b006b;
+        public static final int txt_image_none=0x7f0b0081;
         public static final int txt_label_beer=0x7f0b007d;
+        public static final int txt_label_image=0x7f0b0080;
         public static final int txt_label_name=0x7f0b0077;
         public static final int txt_label_password=0x7f0b007a;
-        public static final int txt_message=0x7f0b00c2;
-        public static final int txt_minus=0x7f0b00c3;
+        public static final int txt_message=0x7f0b00c9;
+        public static final int txt_minus=0x7f0b00ca;
         public static final int txt_name=0x7f0b0060;
-        public static final int txt_new_lecture=0x7f0b0094;
-        public static final int txt_new_password=0x7f0b008d;
-        public static final int txt_new_password_again=0x7f0b008f;
+        public static final int txt_new_lecture=0x7f0b009a;
+        public static final int txt_new_password=0x7f0b0093;
+        public static final int txt_new_password_again=0x7f0b0095;
         public static final int txt_no_account=0x7f0b0074;
         public static final int txt_no_lectures=0x7f0b0067;
+        public static final int txt_no_signature=0x7f0b00a9;
         public static final int txt_no_signatures=0x7f0b005c;
         public static final int txt_password=0x7f0b0070;
-        public static final int txt_password_again=0x7f0b0083;
-        public static final int txt_signed=0x7f0b00be;
-        public static final int txt_start_oclock=0x7f0b009a;
-        public static final int txt_starts=0x7f0b0095;
+        public static final int txt_password_again=0x7f0b0088;
+        public static final int txt_signed=0x7f0b00c5;
+        public static final int txt_start_oclock=0x7f0b00a0;
+        public static final int txt_starts=0x7f0b009b;
         public static final int txt_subtitle=0x7f0b0057;
         public static final int txt_title=0x7f0b0056;
         public static final int up=0x7f0b0001;
@@ -2445,15 +2455,16 @@ containing a value of this type.
         public static final int dialog_change_password=0x7f030023;
         public static final int dialog_edit_name=0x7f030024;
         public static final int dialog_new_lecture=0x7f030025;
-        public static final int element_action_bar=0x7f030026;
-        public static final int element_day_picker=0x7f030027;
-        public static final int element_hour_picker=0x7f030028;
-        public static final int lectures_item=0x7f030029;
-        public static final int signatures_item=0x7f03002a;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002b;
-        public static final int toast_fail=0x7f03002c;
-        public static final int toast_sign_me=0x7f03002d;
-        public static final int toast_success=0x7f03002e;
+        public static final int dialog_signature_image=0x7f030026;
+        public static final int element_action_bar=0x7f030027;
+        public static final int element_day_picker=0x7f030028;
+        public static final int element_hour_picker=0x7f030029;
+        public static final int lectures_item=0x7f03002a;
+        public static final int signatures_item=0x7f03002b;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002c;
+        public static final int toast_fail=0x7f03002d;
+        public static final int toast_sign_me=0x7f03002e;
+        public static final int toast_success=0x7f03002f;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -2519,12 +2530,12 @@ containing a value of this type.
         /**  ACCOUNT NOT ACTIVATED ACTIVITY 
          */
         public static final int account_not_activated=0x7f08004c;
-        public static final int add=0x7f08008b;
+        public static final int add=0x7f080090;
         public static final int agree_to_the_terms=0x7f080041;
         public static final int all_fields_mandatory=0x7f080043;
         public static final int app_name=0x7f080034;
-        public static final int asterisks=0x7f08005e;
-        public static final int at_approx=0x7f080068;
+        public static final int asterisks=0x7f080060;
+        public static final int at_approx=0x7f08006a;
         public static final int beer_label=0x7f08005d;
         /**  MY PROFILE ACTIVITY 
          */
@@ -2636,32 +2647,32 @@ containing a value of this type.
          */
         public static final int confirmation_email_sent=0x7f080046;
         public static final int continue_button=0x7f080050;
-        public static final int create=0x7f08006b;
+        public static final int create=0x7f08006d;
         public static final int create_calendar_message=0x7f080016;
         public static final int create_calendar_title=0x7f080015;
         public static final int create_lecture_button=0x7f080052;
         /**  CHANGE PASSWORD DIALOG 
          */
-        public static final int current_password=0x7f08006e;
+        public static final int current_password=0x7f080070;
         public static final int decline=0x7f080014;
-        public static final int earned_beers=0x7f080060;
+        public static final int earned_beers=0x7f080062;
         public static final int edit_btn=0x7f08005a;
         /**  EDIT NAME DIALOG 
          */
-        public static final int edit_name=0x7f08006c;
+        public static final int edit_name=0x7f08006e;
         /**  LOGIN ACTIVITY 
          */
         public static final int email=0x7f080036;
         public static final int email_invalid=0x7f08003b;
-        public static final int ends_at_approx=0x7f080069;
+        public static final int ends_at_approx=0x7f08006b;
         public static final int enter_your_students_email=0x7f080040;
-        public static final int error_170=0x7f08009e;
+        public static final int error_170=0x7f0800a3;
         /**  API ERRORS 
          */
-        public static final int error_50=0x7f08009a;
-        public static final int error_51=0x7f08009b;
-        public static final int error_60=0x7f08009c;
-        public static final int error_61=0x7f08009d;
+        public static final int error_50=0x7f08009f;
+        public static final int error_51=0x7f0800a0;
+        public static final int error_60=0x7f0800a1;
+        public static final int error_61=0x7f0800a2;
         /**  REGISTRATION ACTIVITY 
          */
         public static final int full_name=0x7f08003d;
@@ -2670,106 +2681,113 @@ containing a value of this type.
         public static final int hello_world=0x7f080035;
         /**  HOUR PICKER 
          */
-        public static final int hour_08=0x7f08007a;
-        public static final int hour_09=0x7f08007b;
-        public static final int hour_10=0x7f08007c;
-        public static final int hour_11=0x7f08007d;
-        public static final int hour_12=0x7f08007e;
-        public static final int hour_13=0x7f08007f;
-        public static final int hour_14=0x7f080080;
-        public static final int hour_15=0x7f080081;
-        public static final int hour_16=0x7f080082;
-        public static final int hour_17=0x7f080083;
-        public static final int hour_18=0x7f080084;
-        public static final int hour_19=0x7f080085;
-        public static final int hour_20=0x7f080086;
-        public static final int hour_21=0x7f080087;
+        public static final int hour_08=0x7f08007f;
+        public static final int hour_09=0x7f080080;
+        public static final int hour_10=0x7f080081;
+        public static final int hour_11=0x7f080082;
+        public static final int hour_12=0x7f080083;
+        public static final int hour_13=0x7f080084;
+        public static final int hour_14=0x7f080085;
+        public static final int hour_15=0x7f080086;
+        public static final int hour_16=0x7f080087;
+        public static final int hour_17=0x7f080088;
+        public static final int hour_18=0x7f080089;
+        public static final int hour_19=0x7f08008a;
+        public static final int hour_20=0x7f08008b;
+        public static final int hour_21=0x7f08008c;
+        public static final int image_label=0x7f08005e;
+        public static final int image_none=0x7f08005f;
+        public static final int image_not_uploaded=0x7f08007c;
+        public static final int image_uploaded=0x7f08007b;
         /**  CONTENT DESCRIPTIONS 
          */
-        public static final int img_logo=0x7f080088;
-        public static final int img_paper_plane=0x7f080089;
+        public static final int img_logo=0x7f08008d;
+        public static final int img_paper_plane=0x7f08008e;
         /**  TOASTS 
          */
-        public static final int lecture_created=0x7f080072;
+        public static final int lecture_created=0x7f080075;
         public static final int login=0x7f080038;
-        public static final int logout=0x7f080099;
-        public static final int menu=0x7f08008a;
-        public static final int minus_one=0x7f080077;
-        public static final int name_changed=0x7f080073;
+        public static final int logout=0x7f08009e;
+        public static final int menu=0x7f08008f;
+        public static final int minus_one=0x7f08007a;
+        public static final int name_changed=0x7f080076;
         public static final int name_label=0x7f08005b;
         /**  NEW LECTURE DIALOG 
          */
-        public static final int new_lecture=0x7f080064;
-        public static final int new_password=0x7f08006f;
-        public static final int new_password_again=0x7f080070;
+        public static final int new_lecture=0x7f080066;
+        public static final int new_password=0x7f080071;
+        public static final int new_password_again=0x7f080072;
         public static final int no_account=0x7f080039;
         /**  LECTURES ACTIVITY 
          */
         public static final int no_active_lectures=0x7f080051;
         /**  NO CONNECTION ACTIVITY 
          */
-        public static final int no_connection=0x7f080061;
+        public static final int no_connection=0x7f080063;
         public static final int no_password=0x7f08003c;
+        /**  SIGNATURE IMAGE DIALOG 
+         */
+        public static final int no_signature_image=0x7f080074;
         public static final int no_signature_requests=0x7f080055;
-        public static final int not_enough_beer=0x7f080076;
-        public static final int o_clock=0x7f08006a;
+        public static final int not_enough_beer=0x7f080079;
+        public static final int o_clock=0x7f08006c;
         public static final int password=0x7f080037;
         public static final int password_again=0x7f08003e;
-        public static final int password_changed=0x7f080074;
+        public static final int password_changed=0x7f080077;
         public static final int password_label=0x7f08005c;
         public static final int password_too_short=0x7f080045;
         public static final int passwords_do_not_match=0x7f080044;
-        public static final int please_connect=0x7f080062;
+        public static final int please_connect=0x7f080064;
         public static final int plus_one=0x7f080058;
         public static final int register=0x7f08003f;
         public static final int register_button=0x7f08003a;
         public static final int reload_button=0x7f080048;
         public static final int resend_button=0x7f08004b;
-        public static final int retry_button=0x7f080063;
-        public static final int save=0x7f08006d;
-        public static final int say_thanks=0x7f080079;
+        public static final int retry_button=0x7f080065;
+        public static final int save=0x7f08006f;
+        public static final int say_thanks=0x7f08007e;
         /**  MENU 
          */
-        public static final int settings=0x7f080098;
+        public static final int settings=0x7f08009d;
         public static final int sign_me=0x7f080054;
         public static final int signed=0x7f080056;
         public static final int spb_default_speed=0x7f080000;
-        public static final int starts=0x7f080065;
+        public static final int starts=0x7f080067;
         /**  LECTURE ACTIVITY 
          */
         public static final int starts_at=0x7f080053;
         public static final int store_picture_message=0x7f080012;
         public static final int store_picture_title=0x7f080011;
-        public static final int submit=0x7f080071;
+        public static final int submit=0x7f080073;
         public static final int terms_button=0x7f080042;
-        public static final int title_activity_account_activated=0x7f080092;
-        public static final int title_activity_account_not_activated=0x7f080091;
-        public static final int title_activity_email_already_sent=0x7f080090;
-        public static final int title_activity_email_sent=0x7f08008f;
-        public static final int title_activity_lecture=0x7f080094;
-        public static final int title_activity_lectures=0x7f080093;
-        public static final int title_activity_login=0x7f08008d;
-        public static final int title_activity_my_profile=0x7f080095;
-        public static final int title_activity_no_connection=0x7f080096;
-        public static final int title_activity_registration=0x7f08008e;
+        public static final int title_activity_account_activated=0x7f080097;
+        public static final int title_activity_account_not_activated=0x7f080096;
+        public static final int title_activity_email_already_sent=0x7f080095;
+        public static final int title_activity_email_sent=0x7f080094;
+        public static final int title_activity_lecture=0x7f080099;
+        public static final int title_activity_lectures=0x7f080098;
+        public static final int title_activity_login=0x7f080092;
+        public static final int title_activity_my_profile=0x7f08009a;
+        public static final int title_activity_no_connection=0x7f08009b;
+        public static final int title_activity_registration=0x7f080093;
         /**  ACTIVITY TITLES 
          */
-        public static final int title_activity_splash=0x7f08008c;
-        public static final int title_activity_top_comrades=0x7f080097;
-        public static final int today=0x7f080066;
-        public static final int tomorrow=0x7f080067;
+        public static final int title_activity_splash=0x7f080091;
+        public static final int title_activity_top_comrades=0x7f08009c;
+        public static final int today=0x7f080068;
+        public static final int tomorrow=0x7f080069;
         /**  TOP COMRADES ACTIVITY 
          */
-        public static final int top_comrades=0x7f08005f;
+        public static final int top_comrades=0x7f080061;
         public static final int undo=0x7f080057;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */
         public static final int wallet_buy_button_place_holder=0x7f080033;
-        public static final int you_asked=0x7f080075;
+        public static final int you_asked=0x7f080078;
         /**  PUSH NOTIFS 
          */
-        public static final int you_have_been_signed=0x7f080078;
+        public static final int you_have_been_signed=0x7f08007d;
         public static final int you_may_start=0x7f08004f;
     }
     public static final class style {
